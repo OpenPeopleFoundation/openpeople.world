@@ -2,6 +2,16 @@
 /* Open People — Design System v1
    Tone: ethical, precise, minimalist; dark research aesthetic with orange accent.
 */
+
+@font-face {
+  font-family: "Eurostile";
+  src: url("/assets/fonts/Eurostile.woff2") format("woff2"),
+       url("/assets/fonts/Eurostile.woff") format("woff");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root{
   --bg:#0b0b0b;
   --surface:#101010;
