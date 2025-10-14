@@ -1,60 +1,205 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>White Paper • Open People</title>
-<link rel="icon" href="/assets/img/favicon.ico">
-<link rel="stylesheet" href="/assets/css/style.css">
-<style>
-.paper-viewer{background:#111;border:1px solid #1c1c1c;border-radius:16px;padding:18px}
-.paper-viewer iframe{width:100%;height:80vh;border:0;border-radius:12px}
-.version-card{background:#101010;border:1px solid #1c1c1c;border-radius:16px;padding:18px}
-</style>
-</head><body>
-<header class="site-header"><div class="inner container">
-<a class="logo" href="/"><img src="/assets/img/op-logo.png" alt="Open People logo" width="140" height="40"><span class="sr-only">Open People</span></a>
-<nav class="nav" aria-label="Primary"><button class="nav__toggle" aria-expanded="false" aria-controls="navmenu">Menu</button>
-<ul id="navmenu" class="nav__list">
-<li><a href="/pages/about.html">About</a></li>
-<li><a href="/pages/protocol.html">Protocol</a></li>
-<li><a href="/pages/whitepaper.html" class="active">White Paper</a></li>
-<li><a href="/pages/join.html">Join</a></li>
-<li><a href="/pages/contact.html">Contact</a></li>
-</ul></nav></div></header>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Open People — White Paper (Public Version). A philosophical and technical foundation for human-aligned digital identity." />
+  <meta name="theme-color" content="#000000" />
+  <title>White Paper • Open People</title>
+  <link rel="icon" href="/assets/img/favicon.ico">
+  <link rel="stylesheet" href="/assets/css/style.css">
 
-<main>
-<section class="hero"><div class="container stack">
-<span class="kicker">White Paper</span>
-<h1 class="display">Structure before power.</h1>
-<p class="lede">The Open People White Paper outlines the philosophical and technical foundations of human-aligned digital identity — a living document designed to evolve with the protocol.</p>
-<div class="stack" style="grid-auto-flow:column;grid-auto-columns:max-content;gap:12px">
-  <a class="btn primary" href="/downloads/OpenPeople_WhitePaper.pdf" target="_blank" rel="noopener">Download PDF</a>
-  <a class="btn" href="https://github.com/OpenPeopleFoundation/openpeople.world" target="_blank" rel="noopener">View on GitHub</a>
-</div></div></section>
+  <!-- Page-specific long-form typography -->
+  <style>
+    .prose { max-width: 78ch; }
+    .prose h1, .prose h2, .prose h3 { letter-spacing: .3px; }
+    .prose h1 { font-size: clamp(28px, 4vw, 42px); margin: 0 0 .5em; }
+    .prose h2 { font-size: clamp(22px, 3vw, 28px); margin: 1.6em 0 .6em; }
+    .prose h3 { font-size: clamp(18px, 2.4vw, 22px); margin: 1.2em 0 .4em; }
+    .prose p  { color: var(--fg); margin: .6em 0; }
+    .prose .subtle { color: var(--muted); }
+    .prose blockquote { margin: 1em 0; padding-left: 16px; border-left: 3px solid var(--accent); color: var(--muted); }
+    .toc { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+    .toc a { color: var(--fg); opacity: .9; }
+    .divider { border: 0; border-top: 1px solid var(--line); margin: 28px 0; }
+    .btn-row { display: grid; grid-auto-flow: column; grid-auto-columns: max-content; gap: 12px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner container">
+      <a class="logo" href="/">
+        <img src="/assets/img/op-logo.png" alt="Open People logo" width="140" height="40">
+        <span class="sr-only">Open People</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="navmenu">Menu</button>
+        <ul id="navmenu" class="nav__list">
+          <li><a href="/pages/about.html">About</a></li>
+          <li><a href="/pages/protocol.html">Protocol</a></li>
+          <li><a href="/pages/whitepaper.html" class="active">White Paper</a></li>
+          <li><a href="/pages/join.html">Join</a></li>
+          <li><a href="/pages/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<section class="section"><div class="container">
-  <div class="paper-viewer">
-    <iframe src="/downloads/OpenPeople_WhitePaper.pdf" title="Open People White Paper"></iframe>
-  </div>
-  <p class="sub" style="margin-top:10px;opacity:.7">If the paper doesn’t display, <a href="/downloads/OpenPeople_WhitePaper.pdf" target="_blank" rel="noopener">open it directly</a>.</p>
-</div></section>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container prose">
+        <span class="kicker">White Paper — Public Version</span>
+        <h1>Structure before power.</h1>
+        <p class="subtle">
+          The Open People White Paper outlines the philosophical and technical foundations of human-aligned digital identity —
+          a living document designed to evolve with the protocol.
+        </p>
+        <div class="btn-row">
+          <a class="btn primary" href="/downloads/OpenPeople_WhitePaper.pdf" download>Download PDF</a>
+          <a class="btn" href="https://github.com/OpenPeopleFoundation/openpeople.world" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </div>
+    </section>
 
-<section class="section"><div class="container stack">
-<h2>Versions & Notes</h2>
-<div class="grid-3">
-  <div class="version-card"><h4>Public Version</h4><p><strong>Focus:</strong> Transparent governance, open technical specs, ethical metrics.</p><p><strong>Tone:</strong> Accessible, collaborative, open source.</p></div>
-  <div class="version-card"><h4>Human-Friendly Version</h4><p><strong>Focus:</strong> Clarity and narrative.</p><p><strong>Tone:</strong> Reflective, inclusive, educational.</p></div>
-  <div class="version-card"><h4>Research Version</h4><p><strong>Focus:</strong> Deeper theoretical work.</p><p><strong>Tone:</strong> Visionary, experimental.</p></div>
-</div></div></section>
-</main>
+    <!-- TOC -->
+    <section class="section">
+      <div class="container prose">
+        <div class="toc">
+          <strong>Contents</strong>
+          <ul>
+            <li><a href="#executive-summary">Executive Summary</a></li>
+            <li><a href="#sec-1">I. Philosophical Foundations</a></li>
+            <li><a href="#sec-2">II. Technical Framework</a></li>
+            <li><a href="#sec-3">III. Measurement &amp; Metrics</a></li>
+            <li><a href="#sec-4">IV. Governance &amp; Open Participation</a></li>
+            <li><a href="#sec-5">V. Conclusion &amp; Future Work</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-<footer class="site-footer"><div class="container footer__inner">
-<div><div class="logo small"><img src="/assets/img/op-logo.png" alt="Open People logo" width="120" height="32"></div>
-<p class="tagline">Identity built on trust, not control.</p>
-<div class="footer__social"><a href="https://x.com/OpenPeopleAI" target="_blank" rel="noopener">X / @OpenPeopleAI</a>
-<a href="https://instagram.com/OpenPeopleAI" target="_blank" rel="noopener">Instagram / @OpenPeopleAI</a></div></div>
-<div class="footer__links"><a href="/pages/about.html">About</a><a href="/pages/protocol.html">Protocol</a>
-<a href="/pages/whitepaper.html" class="active">White Paper</a><a href="/pages/join.html">Join</a><a href="/pages/contact.html">Contact</a></div>
-<div class="footer__meta"><p>© <span id="year"></span> Open People — Open source since day one.</p>
-<p><a href="https://openpeople.world" rel="noopener">openpeople.world</a></p></div></div></footer>
-<script src="/assets/js/main.js"></script>
-<script>const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();</script>
-</body></html>
+    <!-- BODY -->
+    <section class="section">
+      <div class="container prose">
+
+        <h2 id="executive-summary">Executive Summary</h2>
+        <p>
+          Open People is an open, non-profit protocol for human-aligned digital identity. Its purpose is to create a framework
+          where technology can represent human intention without replacing it — a foundation where identity remains owned,
+          portable, and revocable by the individual.
+        </p>
+        <p>
+          This paper outlines both the philosophy and structure of the Open People protocol:
+          the philosophical layer (ethics, empathy, reflection); the technical layer — a four-part stack
+          (Codex, Cortex, Assistant, Temporal) that mirrors human consciousness; and the operational layer —
+          real-world feedback systems that test alignment in live environments.
+        </p>
+        <p>
+          Our goal is not to make machines human — it is to make understanding immortal.
+        </p>
+
+        <hr class="divider">
+
+        <h2 id="sec-1">I. Philosophical Foundations</h2>
+        <h3>Alignment as a Human Process</h3>
+        <p>Alignment begins as an ethical agreement, not a computational task. Before code can represent conscience, conscience must first be expressed as structure.</p>
+
+        <h3>The Failure Mode of Prediction</h3>
+        <p>Prediction replaces understanding with pattern. We do not need systems that know what we will do — we need systems that remember why we do it. Reflection must precede automation.</p>
+
+        <h3>Intention as the Primitive</h3>
+        <p>Intention is the smallest unit of ethical computation. Trust is measured not by accuracy, but by how faithfully a system mirrors declared intent.</p>
+
+        <h3>Structural Empathy</h3>
+        <p>Empathy can be engineered as structure: transparency, consent, and feedback as invariants of alignment.</p>
+        <blockquote>Nothing aligned hides its logic. Nothing aligned acts without permission. Nothing aligned repeats without learning.</blockquote>
+
+        <h3>Technology as Mirror</h3>
+        <p>Technology should not predict us, but reflect us — clearly enough that we can see ourselves.</p>
+
+        <hr class="divider">
+
+        <h2 id="sec-2">II. Technical Framework</h2>
+        <p>The Open People Protocol is a four-layer stack modeled after human consciousness. Each layer performs a distinct cognitive and ethical function — together forming a feedback loop where intention → action → reflection → memory remains auditable.</p>
+
+        <h3>Codex — The Conscience Layer</h3>
+        <p>Encode human intention as verifiable structure: alignment contract, consent schemas, transparency ledger.</p>
+
+        <h3>Cortex — The Execution Layer</h3>
+        <p>Translate declared intent into verifiable action: action attestations, ethical gates, auditable outcomes.</p>
+
+        <h3>Assistant — The Reflection Layer</h3>
+        <p>Maintain ethical coherence: drift detection, reflection prompts, consent-aware guidance.</p>
+
+        <h3>Temporal — The Memory Layer</h3>
+        <p>Preserve continuity: versioned identity states, selective forgetting, portability and interoperability.</p>
+
+        <hr class="divider">
+
+        <h2 id="sec-3">III. Measurement &amp; Metrics</h2>
+        <p>Alignment must be observed, tested, and improved. Open People uses verifiable signals:</p>
+        <ul>
+          <li><strong>VR — Variance Reduction:</strong> consistency vs. declared ethics.</li>
+          <li><strong>DE — Decision Efficiency:</strong> speed vs. validation latency.</li>
+          <li><strong>QAA — Quality-Adjusted Acceptance:</strong> trust × verified results ÷ time.</li>
+          <li><strong>FL — Feedback Latency:</strong> time from misalignment → detection → correction.</li>
+          <li><strong>CRI — Cultural Resolution Index:</strong> fit to local norms and human context.</li>
+        </ul>
+        <p><em>Composite Alignment Score (CAS)</em> combines these to diagnose coherence and learning speed.</p>
+
+        <hr class="divider">
+
+        <h2 id="sec-4">IV. Governance &amp; Open Participation</h2>
+        <p>Governance is ethics made operational. Principles: transparency by default; consent as a living contract; forkability and portability; proof over promise; iterative accountability.</p>
+        <p>Architecture: non-profit stewardship, rotating ethical review, open community proposals. Funding is non-control seeking. Audits are public. All code/research is open-source.</p>
+        <blockquote>This protocol grows through participation, not persuasion.</blockquote>
+
+        <hr class="divider">
+
+        <h2 id="sec-5">V. Conclusion &amp; Future Work</h2>
+        <p>Open People demonstrates that ethics can be expressed as code without being reduced to it. When identity is owned by people, data becomes meaning.</p>
+        <p>Next work: applied pilots, public ethical ledger, proofs-of-alignment primitives, cultural councils, and device continuity.</p>
+        <blockquote>The future of intelligence is not control; it is coordination.</blockquote>
+
+        <hr class="divider">
+
+        <p class="subtle">© Open People — Open source since day one. Identity built on trust, not control.</p>
+        <div class="btn-row" style="margin-top:0">
+          <a class="btn primary" href="/downloads/OpenPeople_WhitePaper.pdf" download>Download PDF</a>
+          <a class="btn" href="https://github.com/OpenPeopleFoundation/openpeople.world" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <div>
+        <div class="logo small">
+          <img src="/assets/img/op-logo.png" alt="Open People logo" width="120" height="32">
+        </div>
+        <p class="tagline">Identity built on trust, not control.</p>
+        <div class="footer__social">
+          <a href="https://x.com/OpenPeopleAI" target="_blank" rel="noopener">X / @OpenPeopleAI</a>
+          <a href="https://instagram.com/OpenPeopleAI" target="_blank" rel="noopener">Instagram / @OpenPeopleAI</a>
+        </div>
+      </div>
+      <div class="footer__links">
+        <a href="/pages/about.html">About</a>
+        <a href="/pages/protocol.html">Protocol</a>
+        <a href="/pages/whitepaper.html" class="active">White Paper</a>
+        <a href="/pages/join.html">Join</a>
+        <a href="/pages/contact.html">Contact</a>
+      </div>
+      <div class="footer__meta">
+        <p>© <span id="year"></span> Open People — Open source since day one.</p>
+        <p><a href="https://openpeople.world" rel="noopener">openpeople.world</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+  <script>const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();</script>
+</body>
+</html>
