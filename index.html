@@ -1,82 +1,6 @@
 <!doctype html>
 <html lang="en">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Open People",
-  "url": "https://openpeople.world/",
-  "sameAs": [
-    "https://x.com/OpenPeopleAI",
-    "https://twitter.com/OpenPeopleAI",
-    "https://instagram.com/OpenPeopleAI"
-  ]
-}
-</script>
-<link rel="me" href="https://x.com/OpenPeopleAI">
-<link rel="me" href="https://instagram.com/OpenPeopleAI">
-
-<!-- SEO / Social -->
-<meta name="description" content="Open People — an open, non-profit protocol for human-aligned digital identity. Built on transparency, consent, and proof.">
-<link rel="canonical" href="https://openpeople.world/">
-
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Open People">
-<meta property="og:title" content="Open People — Identity built on trust, not control.">
-<meta property="og:description" content="An open, non-profit protocol for human-aligned digital identity. Built on transparency, consent, and proof.">
-<meta property="og:url" content="https://openpeople.world/">
-<meta property="og:image" content="https://openpeople.world/assets/img/og.jpg">
-
-<!-- Twitter / X -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@OpenPeopleAI">
-<meta name="twitter:creator" content="@OpenPeopleAI">
-<meta name="twitter:title" content="Open People — Identity built on trust, not control.">
-<meta name="twitter:description" content="An open, non-profit protocol for human-aligned digital identity.">
-<meta name="twitter:image" content="https://openpeople.world/assets/img/og.jpg">
-
-<!-- Organization JSON-LD + rel=me -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Open People",
-  "url": "https://openpeople.world/",
-  "sameAs": [
-    "https://x.com/OpenPeopleAI",
-    "https://twitter.com/OpenPeopleAI",
-    "https://instagram.com/OpenPeopleAI"
-  ]
-}
-</script>
-<link rel="me" href="https://x.com/OpenPeopleAI">
-<link rel="me" href="https://instagram.com/OpenPeopleAI">
-```
-
-- Insert the **Footer Social Block** **right above** `<div class="footer__meta">`:
-```
-<div class="footer__social">
-  <a href="https://x.com/OpenPeopleAI" target="_blank" rel="noopener">X / @OpenPeopleAI</a>
-  <a href="https://instagram.com/OpenPeopleAI" target="_blank" rel="noopener">Instagram / @OpenPeopleAI</a>
-</div>
-```
-
 <head>
-  <meta name="description" content="Open People — an open, non-profit protocol for human-aligned digital identity. Built on transparency, consent, and proof.">
-<link rel="canonical" href="https://openpeople.world/">
-
-<!-- Open Graph / Twitter -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Open People — Identity built on trust, not control.">
-<meta property="og:description" content="An open, non-profit protocol for human-aligned digital identity.">
-<meta property="og:url" content="https://openpeople.world/">
-<meta property="og:image" content="https://openpeople.world/assets/img/og.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Open People">
-<meta name="twitter:description" content="Identity built on trust, not control.">
-<meta name="twitter:image" content="https://openpeople.world/assets/img/og.jpg">
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Open People — an open, non-profit protocol for human-aligned digital identity." />
@@ -88,76 +12,99 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="logo" href="/"><span class="word">open</span> <span class="word alt">people</span><span class="paren">()</span></a>
-    <nav class="nav" aria-label="Primary">
-      <button class="nav__toggle" aria-expanded="false" aria-controls="navmenu">Menu</button>
-      <ul id="navmenu" class="nav__list">
-        <li><a href="/pages/about.html">About</a></li>
-        <li><a href="/pages/protocol.html">Protocol</a></li>
-        <li><a href="/pages/whitepaper.html">White Paper</a></li>
-        <li><a href="/pages/join.html">Join</a></li>
-        <li><a href="/pages/contact.html">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="inner container">
+      <a class="logo" href="/"><span class="word">open</span> <span class="word alt">people</span><span class="paren">()</span><span class="dot" aria-hidden="true"></span></a>
+      <nav class="nav" aria-label="Primary">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="navmenu">Menu</button>
+        <ul id="navmenu" class="nav__list">
+          <li><a href="/pages/about.html">About</a></li>
+          <li><a href="/pages/protocol.html">Protocol</a></li>
+          <li><a href="/pages/whitepaper.html">White Paper</a></li>
+          <li><a href="/pages/join.html">Join</a></li>
+          <li><a href="/pages/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
-  <main class="site-main">
+  <main>
 <section class="hero">
-  <div class="hero__copy">
-    <h1 class="display">Open People</h1>
-    <p class="lede">Identity built on trust, not control.</p>
-    <p class="sub">An open, non-profit protocol for human‑aligned digital identity — built on transparency, consent, and proof.</p>
-    <div class="cta">
-      <a class="btn primary" href="/pages/whitepaper.html">Read the White Paper</a>
-      <a class="btn" href="/pages/join.html">Join the Onboarding</a>
+  <div class="container grid-2">
+    <div class="stack">
+      <span class="kicker">Open, non-profit protocol</span>
+      <h1 class="display">Open People</h1>
+      <p class="lede">Identity built on trust, not control.</p>
+      <p class="sub">Built on transparency, consent, and proof — a living stack for human‑aligned digital identity.</p>
+      <div class="stack" style="grid-auto-flow:column; grid-auto-columns: max-content; gap:12px;">
+        <a class="btn primary" href="/pages/whitepaper.html">Read the White Paper</a>
+        <a class="btn ghost" href="/pages/join.html">Join the Onboarding</a>
+      </div>
+      <div class="grid-3">
+        <div class="stat"><div class="num">4</div><div class="label">Core Layers</div></div>
+        <div class="stat"><div class="num">∞</div><div class="label">Human Contexts</div></div>
+        <div class="stat"><div class="num">1</div><div class="label">North Star</div></div>
+      </div>
+    </div>
+    <div class="viz">
+      <div class="pulse"></div>
+      <div class="orbit orbit--1"></div>
+      <div class="orbit orbit--2"></div>
+      <div class="orbit orbit--3"></div>
     </div>
   </div>
-  <div class="hero__viz" aria-hidden="true">
-    <div class="pulse"></div>
-    <div class="orbit orbit--1"></div>
-    <div class="orbit orbit--2"></div>
-    <div class="orbit orbit--3"></div>
-  </div>
 </section>
 
-<section class="pillars">
-  <div class="grid">
+<section class="section">
+  <div class="container grid-3">
     <article class="card fade">
-      <h3>Open by Design</h3>
-      <p>Non‑profit protocol. Transparent governance. Verifiable contributions.</p>
+      <div class="badge"><span class="dot"></span> Open by Design</div>
+      <h3>Transparent governance</h3>
+      <p>Non‑profit protocol, verifiable contributions, open source since day one.</p>
     </article>
     <article class="card fade">
-      <h3>Human‑Aligned</h3>
-      <p>Consent at the core. Identity is owned, portable, and revocable by you.</p>
+      <div class="badge"><span class="dot"></span> Human‑Aligned</div>
+      <h3>Consent at the core</h3>
+      <p>Identity is owned, portable, and revocable by you — not a platform.</p>
     </article>
     <article class="card fade">
-      <h3>Proof, not Profiles</h3>
-      <p>Minimize data, maximize trust with cryptographic attestations.</p>
+      <div class="badge"><span class="dot"></span> Proof, not Profiles</div>
+      <h3>Trust without oversharing</h3>
+      <p>Minimize data, maximize trust using cryptographic attestations.</p>
     </article>
   </div>
 </section>
 
-<section class="band">
-  <p>“We’re onboarding people until the device is ready to transfer them.”</p>
+<section class="section">
+  <div class="container grid-2">
+    <div class="stack">
+      <h2 class="fs-lg">The Protocol</h2>
+      <p>Codex (conscience), Cortex (execution), Assistant (reflection), Temporal (memory). A living system for ethical identity that evolves with you.</p>
+      <a class="btn" href="/pages/protocol.html">Explore the stack →</a>
+    </div>
+    <div class="stack">
+      <h2 class="fs-lg">Read the Thesis</h2>
+      <p>Our white paper is a philosophical and technical foundation for human‑aligned digital identity.</p>
+      <a class="btn" href="/pages/whitepaper.html">Open the white paper →</a>
+    </div>
+  </div>
 </section>
 
-<section class="split">
-  <div>
-    <h2>The Protocol</h2>
-    <p>Codex (conscience), Cortex (execution), Assistant (reflection), Temporal (memory). A living stack for ethical identity that evolves with you.</p>
-    <a class="link" href="/pages/protocol.html">Explore the stack →</a>
-  </div>
-  <div>
-    <h2>Read the Thesis</h2>
-    <p>Our white paper is a philosophical and technical foundation for human‑aligned digital identity.</p>
-    <a class="link" href="/pages/whitepaper.html">Open the white paper →</a>
+<section class="section">
+  <div class="container">
+    <div class="band">
+      <p>“We’re onboarding people until the device is ready to transfer them.”</p>
+    </div>
   </div>
 </section>
 </main>
   <footer class="site-footer">
-    <div class="footer__inner">
+    <div class="container footer__inner">
       <div>
         <div class="logo small"><span class="word">open</span> <span class="word alt">people</span><span class="paren">()</span></div>
         <p class="tagline">Identity built on trust, not control.</p>
+        <div class="footer__social">
+          <a href="https://x.com/OpenPeopleAI" target="_blank" rel="noopener">X / @OpenPeopleAI</a>
+          <a href="https://instagram.com/OpenPeopleAI" target="_blank" rel="noopener">Instagram / @OpenPeopleAI</a>
+        </div>
       </div>
       <div class="footer__links">
         <a href="/pages/about.html">About</a>
@@ -166,13 +113,8 @@
         <a href="/pages/join.html">Join</a>
         <a href="/pages/contact.html">Contact</a>
       </div>
-      <div class="footer__social">
-  <a href="https://x.com/OpenPeopleAI" target="_blank" rel="noopener">X / @OpenPeopleAI</a>
-  <a href="https://instagram.com/OpenPeopleAI" target="_blank" rel="noopener">Instagram / @OpenPeopleAI</a>
-</div>
-
       <div class="footer__meta">
-        <p>© <span id="year"></span> Open People — Open source since day one.</p>
+        <p>© 2025 Open People — Open source since day one.</p>
         <p><a href="https://openpeople.world" rel="noopener">openpeople.world</a></p>
       </div>
     </div>
