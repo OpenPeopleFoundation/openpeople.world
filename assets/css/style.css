@@ -96,3 +96,7 @@ img{max-width:100%;display:block}
   .nav__list.open{display:grid}
   .nav__list li{padding:6px 2px}
 }
+
+/* Social links in footer */
+.footer__social { display:flex; gap:14px; flex-wrap:wrap; opacity:.85; }
+.footer__social a:hover { opacity:1; }
