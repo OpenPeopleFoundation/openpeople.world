@@ -1,0 +1,24 @@
+<footer class="site-footer">
+  <div class="container footer__inner">
+    <div>
+      <a class="logo small" href="/" aria-label="{{ site.name }}">
+        <img src="/assets/img/op-logo.svg" alt="Open People" width="132" height="32" />
+        <span class="sr-only">{{ site.name }}</span>
+      </a>
+      <p class="tagline">Identity built on trust, not control.</p>
+      <div class="footer__social">
+        <a href="https://x.com/{{ site.twitter }}" target="_blank" rel="noopener">X / @{{ site.twitter }}</a>
+        <a href="https://instagram.com/{{ site.instagram }}" target="_blank" rel="noopener">Instagram / @{{ site.instagram }}</a>
+      </div>
+    </div>
+    <div class="footer__links">
+      {% for item in nav %}
+        <li><a href="{{ item.url }}" {% if page.url == item.url %}aria-current="page"{% endif %}>{{ item.title }}</a></li>
+      {% endfor %}
+    </div>
+    <div class="footer__meta">
+      <p>© {{ "now" | date("yyyy") }} {{ site.name }} — Open source since day one.</p>
+      <p><a href="https://{{ site.domain }}" rel="noopener">{{ site.domain }}</a></p>
+    </div>
+  </div>
+</footer>

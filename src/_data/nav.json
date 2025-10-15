@@ -1,0 +1,8 @@
+[
+  { "title": "About",       "url": "/pages/about/" },
+  { "title": "Protocol",    "url": "/pages/protocol/" },
+  { "title": "White Paper", "url": "/pages/whitepaper/" },
+  { "title": "Foundation",  "url": "/pages/foundation/" },
+  { "title": "Join",        "url": "/pages/join/" },
+  { "title": "Contact",     "url": "/pages/contact/" }
+]

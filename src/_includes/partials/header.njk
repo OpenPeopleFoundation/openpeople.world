@@ -1,0 +1,22 @@
+<header class="site-header">
+  <div class="inner container">
+    <a class="logo" href="/" aria-label="{{ site.name }}">
+      <span class="word">open</span>
+      <span class="word alt">people</span>
+      <span class="paren">()</span>
+      <span class="dot" aria-hidden="true"></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <button class="nav__toggle" aria-expanded="false" aria-controls="navmenu">Menu</button>
+      <ul id="navmenu" class="nav__list">
+        {% for item in nav %}
+          <li>
+            <a href="{{ item.url }}" {% if page.url == item.url %}aria-current="page"{% endif %}>
+              {{ item.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,6 +1,6 @@
 # sw.js (repo root)
 cat > sw.js <<'EOF'
-const CACHE = "openpeople-v1760553044";
+const CACHE = "openpeople-v5";
 const FILES = ["/","/index.html","/assets/css/style.css","/assets/js/main.js"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)));

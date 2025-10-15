@@ -1,1 +1,9 @@
-{ "name": "Open People", "domain": "openpeople.world", "themeColor": "#000000" }
+{
+  "name": "Open People",
+  "org": "Open People Foundation",
+  "domain": "openpeople.world",
+  "twitter": "OpenPeopleAI",
+  "instagram": "OpenPeopleAI",
+  "themeColor": "#000000",
+  "tagline": "Identity built on trust, not control."
+}
