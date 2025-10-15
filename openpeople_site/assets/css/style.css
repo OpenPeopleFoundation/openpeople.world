@@ -13,11 +13,16 @@
 .orbit.slowest{ animation: spin 96s linear infinite; }
 
 @keyframes spin { to { transform: rotate(360deg); } }
+
 /* reveal only the first N at a time to avoid a burst on mobile */
 .reveal { transition-delay: 40ms; }
 .reveal:nth-of-type(2) { transition-delay: 80ms; }
 .reveal:nth-of-type(3) { transition-delay: 120ms; }
+
 /* keep it subtle; avoid huge staggers */
+@media (hover: none) and (pointer: coarse){
+  .btn:hover, .card:hover { transform: none; box-shadow: none; }
+}
 
 /* Buttons: gentle lift */
 .btn { transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s, background .35s; transform: translateZ(0); }
