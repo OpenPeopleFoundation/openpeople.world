@@ -35,7 +35,7 @@
           <li><a href="/pages/protocol.html">Protocol</a></li>
           <li><a href="/pages/whitepaper.html">White Paper</a></li>
           <li><a href="/pages/foundation.html">Foundation</a></li>
-          <li><a href="/pages/join.html" class="active">Join</a></li>
+          <li><a href="/pages/join.html">Join</a></li>
           <li><a href="/pages/contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -63,38 +63,36 @@
     </section>
 
     <!-- FORM -->
-    <section class="section">
-      <div class="container">
+<section class="section">
+    <div class="container">
         <h2>Submit your onboarding reflection</h2>
         <p class="sub">Your entry creates a verifiable signal of intent. Nothing here is stored publicly without your consent.</p>
 
-        <!-- Replace the Formspree URL with your own endpoint -->
-        <form method="post" action="https://formspree.io/f/mayvlrzz">
-          <label><span>Your Name</span>
-            <input type="text" name="name" required placeholder="Full name">
-          </label>
-          <label><span>Email</span>
-            <input type="email" name="email" required placeholder="you@example.com">
-          </label>
-          <label><span>Country / Region</span>
-            <input type="text" name="location" placeholder="Where are you joining from?">
-          </label>
-          <label><span>Why do you want to join?</span>
-            <textarea name="message" rows="4" placeholder="Share a brief reflection on what alignment means to you."></textarea>
-          </label>
-          <label><span>Consent</span>
+        <div class="form-wrap" id="join-form-wrap">
+        <form class="form" method="post" action="https://formspree.io/f/mayvlrzz" data-ajax="true">
+            <label><span>Your Name</span><input type="text" name="name" required placeholder="Full name"></label>
+            <label><span>Email</span><input type="email" name="email" required placeholder="you@example.com"></label>
+            <label><span>Country / Region</span><input type="text" name="location" placeholder="Where are you joining from?"></label>
+            <label><span>Why do you want to join?</span><textarea name="message" rows="4" placeholder="Share a brief reflection on what alignment means to you."></textarea></label>
+            <label><span>Consent</span>
             <select name="consent" required>
-              <option value="">Select an option…</option>
-              <option>I consent to be contacted about research updates</option>
-              <option>I consent to join the open feedback group</option>
-              <option>I prefer to observe only</option>
+                <option value="">Select an option…</option>
+                <option>I consent to be contacted about research updates</option>
+                <option>I consent to join the open feedback group</option>
+                <option>I prefer to observe only</option>
             </select>
-          </label>
-          <button type="submit" class="btn primary">Submit Reflection</button>
-          <p class="form__note">By submitting, you agree to the Alignment Pledge and our privacy statement.</p>
+            </label>
+            <button type="submit" class="btn primary">Submit Reflection</button>
+            <p class="form__note">By submitting, you agree to the Alignment Pledge and our privacy statement.</p>
         </form>
-      </div>
-    </section>
+
+        <!-- status overlay -->
+        <div class="form-status" aria-live="polite" aria-atomic="true">
+            <div class="msg" id="join-form-status">Submitting…</div>
+        </div>
+    </div>
+</div>
+</section>
   </main>
 
   <footer class="site-footer">
