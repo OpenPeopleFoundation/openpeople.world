@@ -22,9 +22,15 @@ const y = document.getElementById('year');
 if (y){ y.textContent = new Date().getFullYear(); }
 
 // Scroll reveal (IntersectionObserver)
+// Scroll reveal (IntersectionObserver) — disconnect after first reveal
 (function(){
-  const io = new IntersectionObserver((entries)=> {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        obs.unobserve(e.target); // <-- disconnect this element to save battery/CPU
+      }
+    });
   }, { rootMargin: '0px 0px -12% 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
