@@ -1,0 +1,121 @@
+---
+layout: layouts/base.njk
+title: Phases
+permalink: /pages/phases/
+description: The three phases of Open People — operational proof, personal agency, and global alignment.
+---
+<style>
+  .prose { max-width: 82ch; }
+  .toc { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+  .toc ul { margin: 0; padding-left: 18px; }
+  .divider { border: 0; border-top: 1px solid var(--line); margin: 28px 0; }
+</style>
+
+<section class="hero">
+  <div class="container prose">
+    <span class="kicker">Roadmap</span>
+    <h1>The Three Phases</h1>
+    <p class="subtle">From operational proof → personal agency → global alignment. Each phase compounds ethics, observability, and consent.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container prose toc">
+    <strong>Contents</strong>
+    <ul>
+      <li><a href="#phase-1">Phase I — Align Business with AI</a></li>
+      <li><a href="#phase-2">Phase II — Align Individuals with AI</a></li>
+      <li><a href="#phase-3">Phase III — Align Humanity with AI</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container prose">
+    <h2 id="phase-1">Phase I — Align Business with AI</h2>
+    <p><strong>Goal:</strong> Prove alignment increases performance in a bounded environment with end-to-end auditability.</p>
+
+    <h3>Reference Pilot</h3>
+    <ul>
+      <li><strong>Environment:</strong> Snow White Laundry (SWL) — POS, labour, service timing, guest feedback.</li>
+      <li><strong>Stack:</strong> Codex (ethics), Cortex (execution), Assistant (reflection), Temporal (memory).</li>
+    </ul>
+
+    <h3>Operational Loop</h3>
+    <ol>
+      <li><strong>Intake:</strong> event stream → unified bus.</li>
+      <li><strong>Plan (Cortex):</strong> minimal, reversible plans.</li>
+      <li><strong>SafetyCheck (Codex):</strong> consent + red lines.</li>
+      <li><strong>Act &amp; Verify:</strong> instrument outcomes.</li>
+      <li><strong>Report &amp; Learn:</strong> log rationale, counterfactuals, metrics → Temporal.</li>
+    </ol>
+
+    <h3>Telemetry &amp; SLOs</h3>
+    <ul>
+      <li><strong>Metrics:</strong> VR, DE, QAA, FL, CRI; AIx composite (ERS, CI, TRR minus drift/latency).</li>
+      <li><strong>Cortex SLOs:</strong> plan p50 ≤ 1.0s (UI), p95 ≤ 2.0s; action success ≥ 98% (non-network); correction latency ↓ week-over-week.</li>
+      <li><strong>Month-1 Gauntlet:</strong> AIx ↑ weekly; TRR ≥ 0.7; zero red-line breaches.</li>
+    </ul>
+
+    <h3>Interfaces</h3>
+    <pre><code>POST /cortex/plan   → {plan, rationale, traceId}
+POST /cortex/act    → {result|error}
+POST /cortex/report → {metrics, rationales}
+
+POST /assistant/explain → {guestView, operatorView}
+POST /assistant/consent → {stateChange → state}
+
+POST /temporal/write         → {chainHash, anchorRef}
+GET  /temporal/trace/{id}    → {records[], proofs}
+GET  /temporal/audit?query=… → {subset, proofs}</code></pre>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container prose">
+    <h2 id="phase-2">Phase II — Align Individuals with AI</h2>
+    <p><strong>Goal:</strong> Self-owned, portable, revocable identity — a mirror that remembers truthfully without surveillance.</p>
+
+    <h3>Identity Primitives</h3>
+    <ul>
+      <li><strong>Codex contracts:</strong> intention vectors, consent schemas, transparency rules (forkable, portable).</li>
+      <li><strong>Assistant UX:</strong> dual-channel explanations; consent steward; drift watch.</li>
+      <li><strong>Temporal continuity:</strong> versioned identity states; selective forgetting; exportable proofs (CSV/JSON + anchors).</li>
+    </ul>
+
+    <h3>Data minimisation &amp; SLOs</h3>
+    <ul>
+      <li>Tokenise identifiers; expire raw text on schedule; retain features + proofs only.</li>
+      <li><strong>SLOs:</strong> consent transition ≤ 150 ms p95; audit export ≤ 2 min for 10k records; over-nudging ↓ month-over-month.</li>
+    </ul>
+
+    <h3>APIs (Identity)</h3>
+    <pre><code>POST /assistant/consent  → {state, time, who}
+POST /assistant/explain  → {guestView, operatorView}
+GET  /temporal/audit?identity=… → {subset, proofs}</code></pre>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container prose">
+    <h2 id="phase-3">Phase III — Align Humanity with AI</h2>
+    <p><strong>Goal:</strong> Make alignment interoperable — ethics, emotion, and logic as shared infrastructure (Open Protocol → HAOS).</p>
+
+    <h3>Open Protocol</h3>
+    <ul>
+      <li><strong>codex(protocol):</strong> conscience-mapping APIs; plural norm packs; counterfactual logging (≥ 80% decisions with alternatives + reasons).</li>
+      <li><strong>Forkability &amp; portability:</strong> zero lock-in; proofs travel with people/orgs; public audits by default.</li>
+      <li><strong>Governance:</strong> non-profit stewardship; rotating ethical review; open proposals; non-control funding.</li>
+    </ul>
+
+    <h3>HAOS (Humanity as OS)</h3>
+    <ul>
+      <li>Each person as a cognitive node (executable conscience + portable continuity).</li>
+      <li>Cultural councils define norms; red lines never move.</li>
+      <li><strong>CRI:</strong> measured per locale; pack switch cost ≤ 50 ms.</li>
+    </ul>
+
+    <hr class="divider">
+    <p class="subtle">© Open People — Open source since day one. Identity built on trust, not control.</p>
+  </div>
+</section>

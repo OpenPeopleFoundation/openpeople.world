@@ -1,5 +1,3 @@
-# manifest.webmanifest (repo root)
-cat > manifest.webmanifest <<'EOF'
 {
   "name": "Open People",
   "short_name": "OpenPeople",
@@ -14,4 +12,3 @@ cat > manifest.webmanifest <<'EOF'
     { "src": "/assets/img/op-logo-512.png", "sizes": "512x512", "type": "image/png" }
   ]
 }
-EOF

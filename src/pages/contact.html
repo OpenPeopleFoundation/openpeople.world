@@ -1,114 +1,50 @@
 ---
 layout: layouts/base.njk
-title: Contact • Open People
+title: Contact
 permalink: /pages/contact/
+description: Signal without surveillance. Minimal, consent-first communication with Open People.
 ---
-<!doctype html>
-<html lang="en">
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
-data-cf-beacon='{"token": "VlEiTb4HTiwOvTE7yjkffh4Qy3I848WL2UGpZPYT"}'></script>
+<style>
+  form { display:grid; gap:14px; max-width:520px; }
+  input, textarea {
+    width:100%;
+    background:#121212;
+    border:1px solid var(--line);
+    color:var(--fg);
+    padding:12px 14px;
+    border-radius:12px;
+  }
+  label span { display:block; margin-bottom:4px; color:var(--muted); font-size:15px; }
+  .note { color: var(--muted); font-size: 14px; }
+</style>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Contact Open People — minimal, consent-first communication." />
-  <meta name="theme-color" content="#000000" />
-  <title>Contact • Open People</title>
-  <link rel="preload" href="/assets/css/style.css" as="style">
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="manifest" href="/manifest.webmanifest">
-  <meta name="theme-color" content="#000000">
-  <style>
-    form { display:grid; gap:14px; max-width:520px }
-    input, textarea, select {
-      width:100%; background:#121212; border:1px solid var(--line);
-      color:var(--fg); padding:12px 14px; border-radius:12px;
-    }
-    label span { display:block; margin-bottom:4px; color:var(--muted); font-size:15px; }
-    .note { color: var(--muted); font-size: 14px; }
-  </style>
-</head>
-<body>
-<header class="site-header">
-  <div class="inner container">
-    <a class="logo" href="/" aria-label="Open People">
-        <span class="word">open</span>
-        <span class="word alt">people</span>
-        <span class="paren">()</span>
-        <span class="dot" aria-hidden="true"></span>
-    </a>
-    <nav class="nav" aria-label="Primary">
-      <button class="nav__toggle" aria-expanded="false" aria-controls="navmenu">Menu</button>
-      <ul id="navmenu" class="nav__list">
-        <li><a href="/pages/about/">About</a></li>
-        <li><a href="/pages/protocol/">Protocol</a></li>
-        <li><a href="/pages/whitepaper/">White Paper</a></li>
-        <li><a href="/pages/foundation/">Foundation</a></li>
-        <li><a href="/pages/join/">Join</a></li>
-        <li><a href="/pages/contact/">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<main id="main">
-  <section class="hero">
-    <div class="container grid-2">
-      <div class="stack">
-        <span class="kicker">Contact</span>
-        <h1 class="display">Signal, not surveillance.</h1>
-        <p class="lede">Send a minimal message with your consent. We only use your details to respond.</p>
-        <p class="sub">For general inquiries: <a class="link" href="mailto:tom@openpeople.me">tom@openpeople.me</a></p>
-      </div>
-      <div class="stack">
-        <p class="note">By sending this form, you consent to be contacted regarding your message. No data is shared or stored publicly.</p>
-      </div>
+<section class="hero">
+  <div class="container grid-2">
+    <div class="stack">
+      <span class="kicker">Contact</span>
+      <h1 class="display">Signal, not surveillance.</h1>
+      <p class="lede">Send a minimal message with your consent. We only use your details to respond.</p>
+      <p class="sub">For general inquiries: <a class="link" href="mailto:tom@openpeople.me">tom@openpeople.me</a></p>
     </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="form-wrap" id="contact-form-wrap">
-        <form class="form" method="post" action="https://formspree.io/f/mayvlrzz" data-ajax="true">
-          <label><span>Your Name</span><input type="text" name="name" required placeholder="Full name"></label>
-          <label><span>Email</span><input type="email" name="email" required placeholder="you@example.com"></label>
-          <label><span>Message</span><textarea name="message" rows="5" required placeholder="How can we help?"></textarea></label>
-          <button type="submit" class="btn primary">Send</button>
-        </form>
-        <div class="form-status" aria-live="polite" aria-atomic="true">
-          <div class="msg" id="contact-form-status">Submitting…</div>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="container footer__inner">
-    <div>
-      <div class="logo small"><img src="/assets/img/op-logo.png" alt="Open People logo" width="120" height="32"></div>
-      <p class="tagline">Open People Foundation — non-profit research into human-aligned technology.</p>
-      <div class="footer__social">
-        <a href="https://x.com/OpenPeopleAI" target="_blank" rel="noopener">X / @OpenPeopleAI</a>
-        <a href="https://instagram.com/OpenPeopleAI" target="_blank" rel="noopener">Instagram / @OpenPeopleAI</a>
-      </div>
-    </div>
-    <div class="footer__links">
-      <li><a href="/pages/about/">About</a></li>
-      <li><a href="/pages/protocol/">Protocol</a></li>
-      <li><a href="/pages/whitepaper/">White Paper</a></li>
-      <li><a href="/pages/foundation/">Foundation</a></li>
-      <li><a href="/pages/join/">Join</a></li>
-      <li><a href="/pages/contact/">Contact</a></li>
-    </div>
-    <div class="footer__meta">
-      <p>© <span id="year"></span> Open People — Open source since day one.</p>
-      <p><a href="https://openpeople.world" rel="noopener">openpeople.world</a></p>
+    <div class="stack">
+      <p class="note">By sending this form, you consent to be contacted regarding your message. No data is shared or stored publicly.</p>
     </div>
   </div>
-</footer>
+</section>
 
-<script src="/assets/js/main.js" defer></script>
-<script>const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();</script>
-</body>
-</html>
+<section class="section">
+  <div class="container">
+    <div class="form-wrap" id="contact-form-wrap">
+      <form class="form" method="post" action="https://formspree.io/f/mayvlrzz" data-ajax data-status="contact-form-status" data-success="Message received. We’ll reply soon.">
+        <label><span>Your Name</span><input type="text" name="name" required placeholder="Full name"></label>
+        <label><span>Email</span><input type="email" name="email" required placeholder="you@example.com"></label>
+        <label><span>Message</span><textarea name="message" rows="5" required placeholder="How can we help?"></textarea></label>
+        <button type="submit" class="btn primary">Send</button>
+        <p class="form__note note">We respond within a few days. Your message is never published.</p>
+      </form>
+      <div class="form-status" aria-live="polite" aria-atomic="true">
+        <div class="msg" id="contact-form-status">Ready to send.</div>
+      </div>
+    </div>
+  </div>
+</section>

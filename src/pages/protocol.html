@@ -1,5 +1,131 @@
 ---
 layout: layouts/base.njk
-title: Protocol • Open People
+title: Protocol
 permalink: /pages/protocol/
+description: The Open People protocol — a four-layer stack (Codex, Cortex, Assistant, Temporal) that keeps identity aligned with human intent.
 ---
+<style>
+  .grid-4 { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .protocol-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: grid; gap: 10px; }
+  .protocol-card h3 { margin: 0; }
+</style>
+
+<section class="hero">
+  <div class="container grid-2">
+    <div class="stack">
+      <span class="kicker">Protocol</span>
+      <h1 class="display">Identity that mirrors conscience.</h1>
+      <p class="lede">Open People is an open, non-profit protocol for human-aligned digital identity. It makes intention observable, action verifiable, and consent portable.</p>
+      <div class="stack" style="grid-auto-flow:column; grid-auto-columns:max-content; gap:12px;">
+        <a class="btn primary" href="/pages/whitepaper/">Read the white paper</a>
+        <a class="btn ghost" href="https://github.com/OpenPeopleFoundation/openpeople.world" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+    </div>
+    <div class="card stack">
+      <h3>Principles</h3>
+      <ul class="stack">
+        <li>Consent before capability.</li>
+        <li>Transparency by default.</li>
+        <li>Proof over promise.</li>
+        <li>Forkability and portability.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container stack">
+    <h2>The four-layer stack</h2>
+    <div class="grid-4">
+      <article class="protocol-card">
+        <div class="badge"><span class="dot"></span> Layer 1</div>
+        <h3>Codex — Conscience</h3>
+        <p>Defines the ethics and consent contracts that every action must honour. Encodes intention, red lines, and transparency rules as verifiable structure.</p>
+        <ul class="stack">
+          <li>Alignment contracts</li>
+          <li>Consent schemas</li>
+          <li>Transparency ledger</li>
+        </ul>
+      </article>
+      <article class="protocol-card">
+        <div class="badge"><span class="dot"></span> Layer 2</div>
+        <h3>Cortex — Execution</h3>
+        <p>Translates declared intent into action. Plans, executes, and records outcomes with safety checks and audit trails embedded.</p>
+        <ul class="stack">
+          <li>Ethical planners</li>
+          <li>Action attestations</li>
+          <li>Feedback observability</li>
+        </ul>
+      </article>
+      <article class="protocol-card">
+        <div class="badge"><span class="dot"></span> Layer 3</div>
+        <h3>Assistant — Reflection</h3>
+        <p>Maintains coherence by observing behaviour, catching drift, and guiding ethical course correction in real-time.</p>
+        <ul class="stack">
+          <li>Consent stewards</li>
+          <li>Dual-channel explanations</li>
+          <li>Reflection prompts</li>
+        </ul>
+      </article>
+      <article class="protocol-card">
+        <div class="badge"><span class="dot"></span> Layer 4</div>
+        <h3>Temporal — Memory</h3>
+        <p>Preserves continuity without surveillance. Stores proofs, anchors history, and enables selective forgetting with portability.</p>
+        <ul class="stack">
+          <li>Versioned identity states</li>
+          <li>Cryptographic anchors</li>
+          <li>Audit exports</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid-2">
+    <div class="stack">
+      <h2>Alignment signals</h2>
+      <p>Alignment is observable. The protocol ships with telemetry that measures how closely actions follow declared conscience.</p>
+      <ul class="stack">
+        <li><strong>VR — Variance Reduction:</strong> matching reality to stated ethics.</li>
+        <li><strong>DE — Decision Efficiency:</strong> speed without skipping safeguards.</li>
+        <li><strong>QAA — Quality-Adjusted Acceptance:</strong> trusted outcomes per cycle.</li>
+        <li><strong>FL — Feedback Latency:</strong> time to detect and correct drift.</li>
+        <li><strong>CRI — Cultural Resolution Index:</strong> fit to local norms.</li>
+      </ul>
+    </div>
+    <div class="card stack">
+      <h3>Operational loop</h3>
+      <ol class="stack">
+        <li>Intake signal → unified event bus.</li>
+        <li>Plan minimal, reversible actions.</li>
+        <li>Verify against Codex red lines.</li>
+        <li>Execute + observe outcomes.</li>
+        <li>Report, learn, and anchor memory.</li>
+      </ol>
+      <p class="subtle">Every step is logged with proofs and available for audit.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid-2">
+    <div class="stack">
+      <h2>APIs</h2>
+      <p>The protocol exposes simple, composable endpoints. Everything returns proofs so actions remain portable.</p>
+      <pre><code>POST /cortex/plan   → { plan, rationale, traceId }
+POST /cortex/act    → { result | error }
+POST /assistant/consent → { state, timestamp }
+GET  /temporal/audit?trace=… → { records[], proofs }</code></pre>
+    </div>
+    <div class="stack">
+      <h2>Roadmap</h2>
+      <ul class="stack">
+        <li>Phase I — operational pilots (hospitality, civic services).</li>
+        <li>Phase II — self-owned identity &amp; consent UX.</li>
+        <li>Phase III — interoperable, culture-scale ethics.</li>
+      </ul>
+      <a class="btn" href="/pages/phases/">Explore the phases →</a>
+    </div>
+  </div>
+</section>

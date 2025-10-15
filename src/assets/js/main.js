@@ -2,73 +2,120 @@
 // Mobile nav toggle & fade observer
 const toggle = document.querySelector('.nav__toggle');
 const list = document.querySelector('#navmenu');
-if (toggle && list){
+if (toggle && list) {
   toggle.addEventListener('click', () => {
     const open = list.classList.toggle('open');
     toggle.setAttribute('aria-expanded', String(open));
   });
 }
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); } });
-}, {rootMargin: '0px 0px -12% 0px'});
-document.querySelectorAll('.fade').forEach(el => io.observe(el));
 
-cat >> assets/js/main.js <<'EOF'
+const io = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+      }
+    });
+  },
+  { rootMargin: '0px 0px -12% 0px' }
+);
+
+document.querySelectorAll('.fade').forEach(element => io.observe(element));
 
 // PWA registration
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/sw.js");
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js');
   });
 }
 
-// AJAX form submit with micro-fade (Join)
-(function(){
-  const wrap = document.getElementById('join-form-wrap');
-  if(!wrap) return;
-  const form = wrap.querySelector('form[data-ajax]');
-  const status = document.getElementById('join-form-status');
-  if(!form || !status) return;
+// AJAX form submit helper
+const enhanceAjaxForm = form => {
+  const wrap = form.closest('.form-wrap');
+  const statusTarget = form.dataset.status ? document.getElementById(form.dataset.status) : null;
+  const statusEl = statusTarget || wrap?.querySelector('.form-status .msg');
+  if (!statusEl) return;
 
-  form.addEventListener('submit', async (e) => {
-    // if user prefers reduced motion, we still run but without fade
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    e.preventDefault();
-    const btn = form.querySelector('button[type="submit"]');
-    if(btn){ btn.disabled = true; btn.textContent = 'Submitting…'; }
-    if(!reduce){ wrap.classList.add('show-status'); status.textContent = 'Submitting…'; }
+  const defaultButtonText = form.querySelector('button[type="submit"]')?.textContent;
+  const submittingText = form.dataset.submitting || 'Submitting…';
+  const successText = form.dataset.success || 'Thanks — we received your message.';
+  const errorText = form.dataset.error || 'Error submitting. Please try again.';
+  const networkText = form.dataset.network || 'Network error. Please try again.';
+  const enableFade = form.dataset.fade === 'true';
 
-    try{
-      const fd = new FormData(form);
-      const resp = await fetch(form.action, {
-        method: 'POST',
-        body: fd,
-        headers: { 'Accept': 'application/json' }
-      });
-      if(resp.ok){
-        if(!reduce){ status.textContent = 'Thank you — reflection received.'; }
-        form.reset();
-        if(!reduce){
-          // brief success pause + fade out the form wrapper
-          setTimeout(()=> {
-            wrap.classList.add('fade-out');
-            setTimeout(()=> {
-              wrap.classList.remove('show-status', 'fade-out');
-              if(btn){ btn.disabled = false; btn.textContent = 'Submit Reflection'; }
-            }, 400);
-          }, 600);
-        }else{
-          if(btn){ btn.disabled = false; btn.textContent = 'Submit Reflection'; }
-        }
-      }else{
-        if(!reduce){ status.textContent = 'Error submitting. Please try again.'; }
-        if(btn){ btn.disabled = false; btn.textContent = 'Submit Reflection'; }
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = submittingText;
+    }
+
+    statusEl.textContent = submittingText;
+    if (wrap && !reduceMotion) {
+      wrap.classList.add('show-status');
+    }
+
+    const restoreButton = () => {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = defaultButtonText || 'Submit';
       }
-    }catch(err){
-      if(!reduce){ status.textContent = 'Network error. Please try again.'; }
-      if(btn){ btn.disabled = false; btn.textContent = 'Submit Reflection'; }
+    };
+
+    const hideStatus = delay => {
+      if (!wrap) return;
+      if (reduceMotion) {
+        wrap.classList.remove('show-status', 'fade-out');
+        return;
+      }
+      setTimeout(() => {
+        wrap.classList.remove('show-status', 'fade-out');
+      }, delay);
+    };
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method || 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+
+      if (!response.ok) {
+        statusEl.textContent = errorText;
+        restoreButton();
+        hideStatus(1200);
+        return;
+      }
+
+      form.reset();
+      statusEl.textContent = successText;
+
+      if (submitButton) {
+        submitButton.classList.add('success');
+        setTimeout(() => submitButton.classList.remove('success'), 900);
+      }
+
+      if (wrap && enableFade && !reduceMotion) {
+        setTimeout(() => {
+          wrap.classList.add('fade-out');
+          setTimeout(() => {
+            wrap.classList.remove('fade-out', 'show-status');
+            restoreButton();
+          }, 400);
+        }, 600);
+      } else {
+        restoreButton();
+        hideStatus(enableFade ? 0 : 1500);
+      }
+    } catch (error) {
+      statusEl.textContent = networkText;
+      restoreButton();
+      hideStatus(1500);
     }
   });
-})();
+};
 
-if(btn){ btn.classList.add('success'); setTimeout(()=>btn.classList.remove('success'), 900); }
+document.querySelectorAll('form[data-ajax]').forEach(enhanceAjaxForm);
