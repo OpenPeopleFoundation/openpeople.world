@@ -72,6 +72,11 @@ a{color:inherit;text-decoration:none}
   backdrop-filter:saturate(140%) blur(8px);
   border-bottom:1px solid var(--line);
 }
+
+.logo img{ display:block; height:40px; width:auto; object-fit:contain }
+@media (max-width:900px){ .logo img{ height:32px } }
+.logo.small img{ height:32px }
+
 .site-header .inner{display:flex; align-items:center; justify-content:space-between; padding:14px 20px}
 .logo{font-weight:800; letter-spacing:.4px; display:flex; align-items:center; gap:6px}
 .logo .paren{opacity:.6}
