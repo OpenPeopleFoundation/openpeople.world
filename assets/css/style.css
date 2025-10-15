@@ -198,7 +198,7 @@ a{color:inherit;text-decoration:none}
   display:flex; align-items:center; gap:8px;
   font-family:"Eurostile","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight:800;
-  font-size: 30px;              /* <- bump size here */
+  font-size: 36px;              /* <- bump size here */
   letter-spacing: .02em;
   line-height: 1;
 }
