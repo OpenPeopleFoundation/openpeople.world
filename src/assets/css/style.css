@@ -111,6 +111,11 @@ a{color:inherit;text-decoration:none}
 .orbit--3{width:100%; height:100%; animation:spin 58s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* CSS: scroll-linked hero */
+@scroll-timeline hero-tl { source: auto; orientation: block; }
+.hero .display { animation: heroFade 1 both; animation-timeline: hero-tl; animation-range: 0% 70%; }
+@keyframes heroFade { from{opacity:.6; transform:translateY(8px) scale(.985)} to{opacity:1; transform:none} }
+
 /* Components */
 .section{padding:48px 0; border-top:1px solid var(--line)}
 .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
@@ -227,3 +232,25 @@ a{color:inherit;text-decoration:none}
 }
 
 .btn.success { background:#fff; color:#000; }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none!important; transition:none!important; scroll-behavior:auto!important }
+}
+
+/* Organic breathe for About hero’s inner circle */
+.orbits .breath{
+  /* ensure transforms apply correctly to SVG shapes */
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe{
+  0%, 100% { transform: scale(.96); opacity: .85; }
+  50%      { transform: scale(1.04); opacity: 1; }
+}
+
+/* Respect user preference */
+@media (prefers-reduced-motion: reduce){
+  .orbits .breath{ animation: none; }
+}
