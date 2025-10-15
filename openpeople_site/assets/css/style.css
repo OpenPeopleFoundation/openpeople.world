@@ -6,6 +6,13 @@
   --line:#1a1a1a;
   --maxw:1140px;
 }
+/* Hero orbits: ultra subtle */
+.orbit { position:absolute; inset:0; margin:auto; border-radius:50%; border:1px solid rgba(255,255,255,.14); will-change: transform; }
+.orbit.slow   { animation: spin 36s linear infinite; }
+.orbit.slower { animation: spin 64s linear infinite reverse; }
+.orbit.slowest{ animation: spin 96s linear infinite; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
 
 h1,h2,h3,.display,.kicker{
   font-family:"Eurostile","Helvetica Neue",Helvetica,Arial,sans-serif;
