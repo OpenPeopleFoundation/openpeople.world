@@ -9,3 +9,5 @@ _site/
 
 echo "node_modules/" >> .gitignore
 echo "_site/" >> .gitignore
+_site/
+node_modules/
