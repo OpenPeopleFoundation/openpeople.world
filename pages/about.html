@@ -8,7 +8,11 @@
   <title>About • Open People</title>
   <link rel="preload" href="/assets/fonts/Eurostile.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="/assets/img/favicon.ico">
-  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="preload" href="/assets/css/style.css" as="style">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="/assets/js/main.js" defer></script>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#000000">
 
   <!-- Social cards (optional to duplicate global) -->
   <meta property="og:title" content="About — Open People">
@@ -30,6 +34,7 @@
 </head>
 <body>
   <header class="site-header">
+    <a href="#main" class="sr-only">Skip to main content</a>
     <div class="inner container">
       <a class="logo" href="/"><span class="word">open</span> <span class="word alt">people</span><span class="paren">()</span><span class="dot" aria-hidden="true"></span></a>
       <nav class="nav" aria-label="Primary">
@@ -47,6 +52,7 @@
 
   <main>
     <!-- HERO -->
+    <main id="main"></main>
     <section class="hero about-hero">
       <div class="container grid-2">
         <div class="stack">
