@@ -70,3 +70,5 @@ if ("serviceWorker" in navigator) {
     }
   });
 })();
+
+if(btn){ btn.classList.add('success'); setTimeout(()=>btn.classList.remove('success'), 900); }

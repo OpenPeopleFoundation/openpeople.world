@@ -1,0 +1,84 @@
+{
+  "name": "openpeople-site",
+  "private": true,
+  "scripts": {
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0"
+  }
+}
+cat > eleventy.js
+module.exports = function(eleventyConfig) {
+  eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  eleventyConfig.addPassthroughCopy({ "src/downloads": "downloads" });
+  eleventyConfig.addPassthroughCopy({ "src/manifest.webmanifest": "manifest.webmanifest" });
+  eleventyConfig.addPassthroughCopy({ "src/sw.js": "sw.js" });
+  return { dir: { input: "src", includes: "_includes", data: "_data", output: "_site" } };
+};
+mkdir -p src/_includes/layouts src/_data src/assets src/pages
+cat > src/_data/site.json
+{ "name": "Open People", "domain": "openpeople.world", "themeColor": "#000000" }
+cat > src/_includes/layouts/base.njk
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>{{ title }} • {{ site.name }}</title>
+<link rel="preload" href="/assets/css/style.css" as="style"><link rel="stylesheet" href="/assets/css/style.css">
+<meta name="theme-color" content="{{ site.themeColor }}">
+</head><body>
+<header class="site-header"><div class="inner container">
+  <a class="logo" href="/"><span class="word">open</span> <span class="word alt">people</span><span class="paren">()</span><span class="dot" aria-hidden="true"></span></a>
+</div></header>
+<main id="main">{{ content | safe }}</main>
+<footer class="site-footer"><div class="container footer__inner">
+  <p>© {{ "now" | date("yyyy") }} {{ site.name }} — Open source since day one.</p>
+</div></footer>
+<script src="/assets/js/main.js" defer></script>
+</body></html>
+cat > src/index.njk
+layout: layouts/base.njk
+title: Open People
+---
+<section class="hero"><div class="container">
+  <h1 class="display">Open People</h1>
+  <p class="lede">Identity built on trust, not control.</p>
+  <a class="btn primary" href="/pages/whitepaper/">Read the White Paper</a>
+</div></section>
+mkdir -p .github/workflows
+cat > .github/workflows/pages.yml <<'EOF'
+name: Build with Eleventy and deploy to Pages
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm install
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: _site }
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+git add -A
+git commit -m "Setup Eleventy (11ty) templating via GitHub Actions"
+git push
