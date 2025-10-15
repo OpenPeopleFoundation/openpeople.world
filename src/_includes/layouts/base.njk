@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>{{ title }} • {{ site.name }}</title>
+<link rel="preload" href="/assets/css/style.css" as="style"><link rel="stylesheet" href="/assets/css/style.css">
+<meta name="theme-color" content="{{ site.themeColor }}">
+</head><body>
+<header class="site-header"><div class="inner container">
+  <a class="logo" href="/"><span class="word">open</span> <span class="word alt">people</span><span class="paren">()</span><span class="dot" aria-hidden="true"></span></a>
+</div></header>
+<main id="main">{{ content | safe }}</main>
+<footer class="site-footer"><div class="container footer__inner">
+  <p>© {{ "now" | date("yyyy") }} {{ site.name }} — Open source since day one.</p>
+</div></footer>
+<script src="/assets/js/main.js" defer></script>
+</body></html>
