@@ -87,8 +87,8 @@ permalink: /pages/dashboards/
   import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
   // TODO: fill with your project settings
-  SUPABASE_URL = https;//supabase.com/project/vwrqapholagchwzkkqpt
-  SUPABASE_ANON_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ3cnFhcGhvbGFnY2h3emtrcXB0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1NjcyMjIsImV4cCI6MjA3NjE0MzIyMn0.cYUNYMx4ebvly0fLWFTtAqWVLEuPmOTZ21wzxEt1_kI
+  const SUPABASE_URL  = "https://vwrqapholagchwzkkqpt.supabase.co";
+  const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ3cnFhcGhvbGFnY2h3emtrcXB0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1NjcyMjIsImV4cCI6MjA3NjE0MzIyMn0.cYUNYMx4ebvly0fLWFTtAqWVLEuPmOTZ21wzxEt1_kI";
 
   const supabase = createClient(SUPABASE_URL, SUPABASE_ANON);
   const el = id => document.getElementById(id);
