@@ -6,5 +6,6 @@
   { "title": "Foundation",  "url": "/pages/foundation/" },
   { "title": "Join",        "url": "/pages/join/" },
   { "title": "Contact",     "url": "/pages/contact/" },
-  { "title": "Members",     "url": "/pages/members/" }
+  { "title": "Members",     "url": "/pages/members/" },
+  { "title": "Dashboards", "url": "/pages/dashboards/" }
 ]
