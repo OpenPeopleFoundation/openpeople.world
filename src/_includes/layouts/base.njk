@@ -6,12 +6,43 @@
   <title>{{ title | default(site.name) }} • {{ site.name }}</title>
   <meta name="description" content="{{ description or site.tagline }}">
   <meta name="theme-color" content="{{ site.themeColor }}">
+
+  <!-- Styles -->
   <link rel="preload" href="/assets/css/style.css" as="style">
   <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- PWA -->
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="icon" href="/assets/img/favicon.ico">
-  connect-src 'self' https://*.supabase.co;
-  script-src 'self' https://esm.sh https://cdn.jsdelivr.net https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js;
+
+  <!-- (Optional) CSP: include only the hosts you actually use -->
+  {# 
+  <meta http-equiv="Content-Security-Policy"
+    content="
+      default-src 'self';
+      img-src 'self' data:;
+      style-src 'self' 'unsafe-inline';
+      script-src 'self' https://esm.sh https://cdn.jsdelivr.net https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js;
+      connect-src 'self' https://*.supabase.co;
+      frame-ancestors 'none';
+      base-uri 'self';
+      form-action 'self' https://formspree.io;
+      <style>.auth-only{display:none}</style>
+    ">
+  #}
+
+  <!-- Hide auth-only by default; JS toggles once we detect session -->
+  <style>
+  .auth-only{display:none}
+  .member-only{display:none}
+</style>
+
+<script>
+  // Expose Supabase settings (from site.json) globally
+  window.SUPABASE_URL = "{{ site.supabaseUrl }}";
+  window.SUPABASE_ANON = "{{ site.supabaseAnon }}";
+</script>
+  
 </head>
 <body>
   <a href="#main" class="sr-only">Skip to main content</a>
@@ -24,6 +55,77 @@
 
   {% include "partials/footer.njk" %}
 
+  <!-- Minimal inline toggle for auth/guest links -->
+  <script>
+  (function(){
+    try{
+      var key = Object.keys(localStorage).find(function(k){
+        return k.startsWith('sb-') && k.endsWith('-auth-token');
+      }) || 'sb-vwrqapholagchwzkkqpt-auth-token';  // your project ref fallback
+      var raw = localStorage.getItem(key);
+      var loggedIn = false;
+      if (raw){
+        try{
+          var obj = JSON.parse(raw);
+          loggedIn = !!(obj && ((obj.currentSession && obj.currentSession.access_token) || obj.access_token));
+        }catch(e){ loggedIn = raw.indexOf('access_token') !== -1; }
+      }
+      var show = function(sel,on){ document.querySelectorAll(sel).forEach(el=> el.style.display = on ? '' : 'none'); };
+      show('.auth-only', loggedIn);
+      show('.guest-only', !loggedIn);
+    }catch(e){}
+  })();
+  </script>
+  <script>
+(async function(){
+  try {
+    var key = Object.keys(localStorage).find(k => k.startsWith('sb-') && k.endsWith('-auth-token'))
+              || 'sb-vwrqapholagchwzkkqpt-auth-token';
+    var raw = localStorage.getItem(key);
+    var loggedIn = false;
+    if (raw) {
+      try {
+        var obj = JSON.parse(raw);
+        loggedIn = !!(obj && ((obj.currentSession && obj.currentSession.access_token) || obj.access_token));
+      } catch (e) {
+        loggedIn = raw.indexOf('access_token') !== -1;
+      }
+    }
+
+    var show = (sel, on) => document.querySelectorAll(sel).forEach(el => el.style.display = on ? '' : 'none');
+
+    if (!loggedIn) {
+      show('.guest-only', true);
+      show('.auth-only', false);
+      show('.member-only', false);
+      return;
+    }
+
+    // Logged in
+    show('.guest-only', false);
+    show('.auth-only', true);
+
+    if (window.SUPABASE_URL && window.SUPABASE_ANON) {
+      const { createClient } = await import('https://esm.sh/@supabase/supabase-js@2');
+      const supabase = createClient(window.SUPABASE_URL, window.SUPABASE_ANON);
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) { show('.member-only', false); return; }
+
+      const { data: profile, error } = await supabase
+        .from('profiles')
+        .select('is_member')
+        .eq('id', user.id)
+        .single();
+
+      const isMember = !error && profile && profile.is_member === true;
+      show('.member-only', !!isMember);
+    }
+  } catch (e) {
+    console.warn('Nav auth/member toggle error:', e);
+  }
+})();
+</script>
+  <!-- Your main JS once (defer) -->
   <script src="/assets/js/main.js" defer></script>
 </body>
 </html>

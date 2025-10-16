@@ -11,7 +11,14 @@
       <ul id="navmenu" class="nav__list">
         {% for item in nav %}
           <li>
-            <a href="{{ item.url }}" {% if page.url == item.url %}aria-current="page"{% endif %}>
+            {% set classes = [] %}
+            {% if item.url == '/pages/dashboards/' %}
+              {% set _ = classes.push('member-only') %}
+            {% endif %}
+            {% if item.title | lower == 'members' %}
+              {% set _ = classes.push('guest-only') %}
+            {% endif %}
+            <a href="{{ item.url }}" class="{{ classes | join(' ') }}" {% if page.url == item.url %}aria-current="page"{% endif %}>
               {{ item.title }}
             </a>
           </li>
