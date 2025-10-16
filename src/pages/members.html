@@ -3,19 +3,6 @@ layout: layouts/base.njk
 title: Members
 permalink: /pages/members/
 ---
-
-<style>
-  form { display:grid; gap:14px; max-width:520px; }
-  input, textarea {
-    width:100%;
-    background:#121212;
-    border:1px solid var(--line);
-    color:var(--fg);
-    padding:12px 14px;
-    border-radius:12px;
-  }
-  label span { display:block; margin-bottom:4px; color:var(--muted); font-size:15px; }
-  .note { color: var(--muted); font-size: 14px; }
 </style>
 <section class="hero">
   <div class="container grid-2">
@@ -56,8 +43,8 @@ permalink: /pages/members/
   import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
   // TODO: replace with your project values
-  const SUPABASE_URL = "https://YOUR-PROJECT.supabase.co";
-  const SUPABASE_ANON = "YOUR-ANON-PUBLIC-KEY";
+  SUPABASE_URL = "https://supabase.com/project/vwrqapholagchwzkkqpt"
+  SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ3cnFhcGhvbGFnY2h3emtrcXB0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1NjcyMjIsImV4cCI6MjA3NjE0MzIyMn0.cYUNYMx4ebvly0fLWFTtAqWVLEuPmOTZ21wzxEt1_kI"
 
   const supabase = createClient(SUPABASE_URL, SUPABASE_ANON);
 
@@ -74,6 +61,14 @@ permalink: /pages/members/
       out.style.display = '';
       inx.style.display = 'none';
     }
+    // After const msg = el('auth-msg');
+    const showErr = (e) => { msg.textContent = (e?.message || e || "Network error"); console.error(e); };
+        el('magic').addEventListener('click', async ()=>{
+        try {
+    const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: window.location.origin + "/pages/members/" }});
+        if (error) showErr(error); else msg.textContent = "Check your email for a sign-in link.";
+         } catch(e){ showErr(e); }
+    });
   }
 
   // Magic link
