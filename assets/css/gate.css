@@ -1,21 +1,206 @@
-:root{ --accent:#ff5a1f; }
-.gate{min-height:100dvh; display:grid; place-items:center; padding:24px;}
-.gate-card{
-  width:100%; max-width:420px; border:1px solid #232734; border-radius:16px;
-  padding:24px; background:linear-gradient(180deg,#0f1116,#0b0b0f);
-  box-shadow:0 10px 40px rgba(0,0,0,.45);
+:root{
+  --bg:#030306;
+  --accent:#ff5a1f;
+  --accent-soft:rgba(255,90,31,.3);
+  --surface:rgba(14,16,26,.9);
+  --outline:rgba(255,255,255,.12);
+  --text:#f1f4fb;
+  --muted:#a4afc5;
+  --radius:18px;
+  --shadow:0 26px 80px rgba(0,0,0,.5);
+  font-family:system-ui,-apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
 }
-.gate-brand{font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:6px}
-.op-paren{color:var(--accent)}
-.gate-title{margin:8px 0 4px; font-size:22px}
-.gate-sub{opacity:.75; font-size:14px}
-.gate-form{display:flex; gap:10px; margin-top:16px}
-.gate-form input{
-  flex:1; padding:10px 12px; border-radius:10px; border:1px solid #232734;
-  background:rgba(0,0,0,.4); color:inherit; outline:none;
+
+@font-face{
+  font-family:"Eurostile";
+  src:url("/assets/fonts/Eurostile.woff2") format("woff2");
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
 }
-.gate-form input:focus{border-color:var(--accent)}
-.btn{padding:10px 14px; border-radius:10px; border:1px solid #232734; background:transparent; color:inherit}
-.btn:hover{border-color:var(--accent)}
-.gate-error{color:#ffb4a8; font-size:13px; margin-top:10px}
-.gate-note{opacity:.6; font-size:12px; margin-top:12px}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+
+.gate-body{
+  min-height:100vh;
+  background:
+    radial-gradient(1400px 900px at 20% -12%, rgba(255,90,31,.34), transparent 68%),
+    radial-gradient(1200px 740px at 80% 4%, rgba(96,42,18,.22), transparent 66%),
+    linear-gradient(200deg,#070404 0%, #040202 62%, #000 100%);
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px clamp(20px,4vw,48px);
+}
+
+.gate{
+  position:relative;
+  width:100%;
+  max-width:520px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.gate__halo{
+  position:absolute;
+  inset:-20%;
+  background:
+    radial-gradient(480px 340px at 50% 0%, rgba(255,90,31,.4), transparent 64%),
+    radial-gradient(520px 360px at 50% 100%, rgba(96,36,12,.24), transparent 72%);
+  filter:blur(18px);
+  opacity:.75;
+  z-index:0;
+}
+
+.gate__card{
+  position:relative;
+  z-index:1;
+  width:100%;
+  background:linear-gradient(180deg, rgba(18,20,34,.94), rgba(7,8,18,.96));
+  border-radius:var(--radius);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:var(--shadow);
+  padding:38px clamp(28px,4vw,44px);
+  display:grid;
+  gap:22px;
+}
+
+.gate__logo{
+  display:inline-flex;
+  font-family:"Eurostile",system-ui;
+  letter-spacing:.44em;
+  text-transform:uppercase;
+  font-size:13px;
+  color:var(--accent);
+}
+
+.gate__header h1{
+  margin:10px 0 12px;
+  font-family:"Eurostile",system-ui;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:28px;
+}
+.gate__header p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.5;
+}
+
+.gate__form{
+  display:grid;
+  gap:16px;
+}
+
+.gate__label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  color:rgba(255,255,255,.65);
+}
+
+.gate__field{
+  display:flex;
+  align-items:center;
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--outline);
+  border-radius:14px;
+  overflow:hidden;
+}
+.gate__field:focus-within{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(255,90,31,.16);
+}
+.gate__field input{
+  flex:1;
+  padding:14px 16px;
+  background:transparent;
+  border:0;
+  color:var(--text);
+  font-size:16px;
+  letter-spacing:.04em;
+}
+.gate__field input::placeholder{color:rgba(255,255,255,.35)}
+.gate__field input:focus{outline:none}
+
+.gate__toggle{
+  border:0;
+  background:rgba(255,255,255,.04);
+  color:var(--muted);
+  padding:12px 18px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-size:11px;
+  cursor:pointer;
+  transition:all .2s ease;
+}
+.gate__toggle:hover,
+.gate__toggle:focus-visible{
+  background:rgba(255,90,31,.18);
+  color:var(--text);
+  outline:none;
+}
+
+.gate__submit{
+  margin-top:6px;
+  padding:14px;
+  border-radius:14px;
+  border:0;
+  background:linear-gradient(135deg,#ff7a2e 0%,#ff5a1f 45%,#f13b3b 100%);
+  color:#0c0400;
+  font-family:"Eurostile",system-ui;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-size:12px;
+  cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease;
+  box-shadow:0 16px 40px rgba(255,90,31,.28);
+}
+.gate__submit:hover{transform:translateY(-2px);box-shadow:0 20px 60px rgba(255,90,31,.32)}
+.gate__submit:disabled{
+  opacity:.6;
+  cursor:progress;
+  transform:none;
+  box-shadow:none;
+}
+
+.gate__message{
+  min-height:1.2em;
+  font-size:14px;
+  color:var(--muted);
+}
+.gate__message[data-state="error"]{color:#ff9580}
+.gate__message[data-state="success"]{color:#8fffd1}
+
+.gate__hint{
+  margin:0;
+  font-size:12px;
+  color:rgba(255,255,255,.45);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.gate__footer{
+  display:flex;
+  justify-content:flex-end;
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.gate__footer a{
+  color:var(--muted);
+  transition:color .2s ease;
+}
+.gate__footer a:hover{color:var(--accent)}
+
+@media (max-width:520px){
+  .gate__card{padding:32px 24px;border-radius:16px}
+  .gate__submit{letter-spacing:.12em}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important;animation:none!important}
+}

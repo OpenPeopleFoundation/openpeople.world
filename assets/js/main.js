@@ -1,134 +1,122 @@
-// Open People — SpaceX vibe micro-interactions
+// Open People — experience choreography
 (() => {
-  // Smooth scroll for in-page links
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const id = a.getAttribute('href').slice(1);
-      const el = document.getElementById(id);
-      if (el) {
-        e.preventDefault();
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        history.pushState(null, "", `#${id}`);
+  // Smooth scroll for same-page anchors
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', event => {
+      const id = link.getAttribute('href')?.substring(1);
+      if (!id) return;
+      const section = document.getElementById(id);
+      if (!section) return;
+      event.preventDefault();
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.pushState(null, '', `#${id}`);
+    });
+  });
+
+  // Reveal animation observer
+  const revealEls = document.querySelectorAll('.reveal');
+  if (revealEls.length) {
+    const io = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.08 }
+    );
+    revealEls.forEach(el => io.observe(el));
+  }
+
+  // Active nav state
+  const navLinks = Array.from(document.querySelectorAll('a[data-nav]'));
+  if (navLinks.length) {
+    const sections = navLinks
+      .map(link => document.querySelector(link.getAttribute('href') || ''))
+      .filter(Boolean);
+
+    const navObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const id = `#${entry.target.id}`;
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === id);
+          });
+        });
+      },
+      { threshold: 0.55 }
+    );
+
+    sections.forEach(section => navObserver.observe(section));
+  }
+
+  // Progress bar
+  const progress = document.createElement('div');
+  progress.className = 'progress';
+  document.body.appendChild(progress);
+
+  const updateProgress = () => {
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - doc.clientHeight;
+    const value = max > 0 ? (doc.scrollTop || document.body.scrollTop) / max : 0;
+    progress.style.transform = `scaleX(${value})`;
+  };
+  updateProgress();
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    progress.style.transition = 'none';
+  }
+
+  // Mobile navigation
+  const toggle = document.querySelector('.nav-toggle');
+  const drawer = document.getElementById('mobile-nav');
+  if (toggle && drawer) {
+    let closeTimer;
+
+    const openNav = () => {
+      drawer.hidden = false;
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(() => {
+        drawer.classList.add('is-open');
+        drawer.querySelector('a')?.focus();
+      });
+    };
+
+    const closeNav = () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      drawer.classList.remove('is-open');
+      document.body.style.overflow = '';
+      closeTimer = window.setTimeout(() => {
+        drawer.hidden = true;
+      }, 250);
+    };
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        closeNav();
+      } else {
+        if (closeTimer) window.clearTimeout(closeTimer);
+        openNav();
       }
     });
-  });
 
-  // Reveal on scroll
-  const els = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
-  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
-  els.forEach(el => io.observe(el));
-
-  // Active nav underline based on section in view
-  const navLinks = [...document.querySelectorAll('a[data-nav]')];
-  const sections = navLinks
-    .map(l => document.querySelector(l.getAttribute('href')))
-    .filter(Boolean);
-
-  const activeIO = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const id = `#${entry.target.id}`;
-      navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
+    drawer.addEventListener('click', event => {
+      const target = event.target;
+      if (target instanceof HTMLAnchorElement) {
+        closeNav();
+      }
     });
-  }, { threshold: 0.5 });
-  sections.forEach(s => activeIO.observe(s));
 
-  // Click ripple for interactive cards
-  document.querySelectorAll('.interactive').forEach(card => {
-    card.addEventListener('click', (ev) => {
-      const r = document.createElement('span');
-      r.className = 'ripple';
-      const rect = card.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      r.style.width = r.style.height = `${size}px`;
-      r.style.left = `${ev.clientX - rect.left - size/2}px`;
-      r.style.top = `${ev.clientY - rect.top - size/2}px`;
-      card.appendChild(r);
-      setTimeout(() => r.remove(), 600);
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        closeNav();
+      }
     });
-  });
-
-  // Inject ripple styles
-  const s = document.createElement('style');
-  s.textContent = `
-  .interactive{overflow:hidden}
-  .interactive .ripple{
-    position:absolute;border-radius:50%;transform:scale(0);
-    background:radial-gradient(circle, rgba(255,90,0,.35) 0%, rgba(255,90,0,0) 60%);
-    animation:rip .6s ease-out forwards; pointer-events:none;
   }
-  @keyframes rip { to { transform:scale(1); opacity:0; } }
-  `;
-  document.head.appendChild(s);
-})();
-
-// Launch telemetry progress bar
-(() => {
-  const bar = document.createElement('div');
-  bar.className = 'progress';
-  document.body.appendChild(bar);
-
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const set = () => {
-    const h = document.documentElement;
-    const max = h.scrollHeight - h.clientHeight;
-    const p = max > 0 ? (h.scrollTop || document.body.scrollTop) / max : 0;
-    bar.style.transform = `scaleX(${p})`;
-  };
-
-  // Update on scroll/resize, and once on load
-  window.addEventListener('scroll', set, { passive: true });
-  window.addEventListener('resize', set);
-  set();
-
-  if (reduceMotion) {
-    bar.style.transition = 'none';
-  }
-})();
-
-// Mobile drawer menu (accessible)
-(() => {
-  const btn = document.querySelector('.hamburger');
-  const drawer = document.getElementById('mobile-nav');
-  if (!btn || !drawer) return;
-
-  let backdrop;
-
-  const open = () => {
-    drawer.hidden = false;
-    drawer.classList.add('is-open');
-    btn.setAttribute('aria-expanded', 'true');
-    backdrop = document.createElement('div');
-    backdrop.className = 'drawer-backdrop';
-    document.body.appendChild(backdrop);
-    document.body.style.overflow = 'hidden';
-    drawer.querySelector('a')?.focus();
-  };
-
-  const close = () => {
-    drawer.classList.remove('is-open');
-    btn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-    backdrop && backdrop.remove();
-    setTimeout(() => { drawer.hidden = true; }, 200);
-  };
-
-  btn.addEventListener('click', () => {
-    const expanded = btn.getAttribute('aria-expanded') === 'true';
-    expanded ? close() : open();
-  });
-
-  // Close when clicking backdrop or a nav link
-  document.addEventListener('click', (e) => {
-    if (e.target === backdrop) close();
-    if (drawer.contains(e.target) && e.target.tagName === 'A') close();
-  });
-
-  // ESC to close
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') close();
-  });
 })();
