@@ -63,3 +63,28 @@
   `;
   document.head.appendChild(s);
 })();
+
+// Launch telemetry progress bar
+(() => {
+  const bar = document.createElement('div');
+  bar.className = 'progress';
+  document.body.appendChild(bar);
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const set = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const p = max > 0 ? (h.scrollTop || document.body.scrollTop) / max : 0;
+    bar.style.transform = `scaleX(${p})`;
+  };
+
+  // Update on scroll/resize, and once on load
+  window.addEventListener('scroll', set, { passive: true });
+  window.addEventListener('resize', set);
+  set();
+
+  if (reduceMotion) {
+    bar.style.transition = 'none';
+  }
+})();
