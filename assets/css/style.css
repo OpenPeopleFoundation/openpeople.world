@@ -1,16 +1,77 @@
-:root { --bg:#0b0b0b; --fg:#f5f5f5; --accent:#ff5a00; --muted:#9aa0a6; }
+/* ---------- Base / Tokens ---------- */
+:root{
+  --bg:#0b0b0f; --fg:#f3f6fa; --muted:#a3abb6; --card:#0f1116; --ring:#232734;
+  --accent:#ff5a00; --accent-weak:#ff5a0022; --wrap:1120px; --radius:16px;
+}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
-  background:var(--bg);
-  color:var(--fg);
-  font-family: system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-  line-height:1.5;
+  background:var(--bg); color:var(--fg);
+  font-family: system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
 }
-.header{display:flex;align-items:center;gap:12px;padding:20px}
-.header img{height:28px}
-.container{max-width:1100px;margin:0 auto;padding:24px}
-h1{font-size:clamp(28px,4vw,44px);margin:16px 0}
-p{color:var(--muted);max-width:70ch}
-.button{display:inline-block;padding:.7rem 1rem;border-radius:10px;border:1px solid #333;text-decoration:none;color:var(--fg)}
-.button:hover{border-color:var(--accent)}
+@font-face{
+  font-family:"Eurostile";
+  src:url("/assets/fonts/Eurostile.woff2") format("woff2");
+  font-weight:400; font-style:normal; font-display:swap;
+}
+.title,h1,h2,h3{font-family:"Eurostile",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif; letter-spacing:.02em}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:var(--wrap); margin:0 auto; padding:0 20px}
+.skip{position:absolute;left:-9999px;top:auto}
+.skip:focus{left:12px;top:12px;background:#000;color:#fff;padding:8px 12px;border-radius:10px}
+.site-header{position:sticky;top:0;z-index:10;background:rgba(11,11,15,.7);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--ring)}
+.navwrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.nav{display:flex;gap:18px;align-items:center}
+.nav a{color:var(--fg);opacity:.85;text-decoration:none}
+.nav a:hover{opacity:1}
+.btn{display:inline-block;padding:.6rem 1rem;border:1px solid var(--ring);border-radius:12px;color:var(--fg);text-decoration:none;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.btn:hover{border-color:var(--accent); transform:translateY(-1px); box-shadow:0 6px 20px var(--accent-weak)}
+.link{color:var(--fg);opacity:.85;text-decoration:none}
+.link:hover{text-decoration:underline;opacity:1}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;isolation:isolate;padding:96px 0 64px;overflow:hidden}
+.hero-bg{position:absolute;inset:-20%;z-index:-1;background:
+  radial-gradient(900px 320px at 20% -10%, #ff5a0044, transparent 60%),
+  radial-gradient(700px 260px at 85% -30%, #ffffff12, transparent 60%)
+; filter:saturate(120%) blur(0px); animation:glow 18s ease-in-out infinite}
+@keyframes glow{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+.title{font-size:clamp(42px,6vw,72px);margin:0 0 12px}
+.lead{color:var(--muted);font-size:clamp(16px,2vw,20px);max-width:72ch}
+.cta{display:flex;gap:14px;margin-top:18px;flex-wrap:wrap}
+
+/* ---------- Panels / Cards ---------- */
+.panel{padding:64px 0;border-top:1px solid var(--ring)}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{
+  background:linear-gradient(180deg,#0f1116,#0b0b0f);
+  border:1px solid var(--ring); border-radius:var(--radius);
+  padding:22px; box-shadow:0 1px 0 #000 inset, 0 0 0 1px rgba(255,255,255,.02) inset;
+}
+.card h2,.card h3{margin:8px 0 10px}
+.bullets{margin:0;padding-left:18px;color:var(--muted)}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.chip{display:inline-block;padding:.4rem .7rem;border-radius:999px;border:1px solid var(--accent);text-decoration:none;color:var(--fg);opacity:.9}
+.chip:hover{opacity:1;box-shadow:0 4px 14px var(--accent-weak)}
+
+/* ---------- Interactive ---------- */
+.interactive{transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease}
+.interactive:hover{transform:translateY(-4px); box-shadow:0 12px 40px #0008, 0 0 0 1px var(--accent-weak)}
+.interactive:focus-within{outline:2px solid var(--accent); outline-offset:2px}
+.brand img{display:block}
+.brand img::after{content:"";}
+
+/* ---------- Reveal on Scroll ---------- */
+.reveal{opacity:0; transform:translateY(12px); transition:opacity .7s ease, transform .7s ease}
+.reveal.is-visible{opacity:1; transform:none}
+
+/* ---------- Footer ---------- */
+.site-footer{border-top:1px solid var(--ring);padding:28px 0;color:var(--muted)}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important}
+  .reveal{opacity:1 !important; transform:none !important}
+}

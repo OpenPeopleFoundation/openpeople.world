@@ -1,7 +1,0 @@
-[
-  { "title": "Home",        "url": "/" },
-  { "title": "Studio",      "url": "/studio/" },
-  { "title": "Members",     "url": "/members/" },
-  { "title": "White Paper", "url": "/whitepaper/" },
-  { "title": "About",       "url": "/about/" }
-]
