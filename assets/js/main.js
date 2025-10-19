@@ -88,3 +88,47 @@
     bar.style.transition = 'none';
   }
 })();
+
+// Mobile drawer menu (accessible)
+(() => {
+  const btn = document.querySelector('.hamburger');
+  const drawer = document.getElementById('mobile-nav');
+  if (!btn || !drawer) return;
+
+  let backdrop;
+
+  const open = () => {
+    drawer.hidden = false;
+    drawer.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    backdrop = document.createElement('div');
+    backdrop.className = 'drawer-backdrop';
+    document.body.appendChild(backdrop);
+    document.body.style.overflow = 'hidden';
+    drawer.querySelector('a')?.focus();
+  };
+
+  const close = () => {
+    drawer.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    backdrop && backdrop.remove();
+    setTimeout(() => { drawer.hidden = true; }, 200);
+  };
+
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    expanded ? close() : open();
+  });
+
+  // Close when clicking backdrop or a nav link
+  document.addEventListener('click', (e) => {
+    if (e.target === backdrop) close();
+    if (drawer.contains(e.target) && e.target.tagName === 'A') close();
+  });
+
+  // ESC to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') close();
+  });
+})();

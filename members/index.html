@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Member Access — Open People</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/gate.css" />
+</head>
+<body>
+  <main class="gate">
+    <div class="gate-card">
+      <div class="gate-brand">
+        <span class="op-paren">(</span> open people <span class="op-paren">)</span>
+      </div>
+      <h1 class="gate-title">Member Access</h1>
+      <p class="gate-sub">Enter the password to proceed to dashboards.</p>
+
+      <form id="gate-form" class="gate-form" autocomplete="off">
+        <input id="gate-input" type="password" placeholder="Password" aria-label="Password" />
+        <button type="submit" class="btn">Enter</button>
+      </form>
+
+      <p id="gate-error" class="gate-error" hidden>Incorrect password. Try again.</p>
+      <p class="gate-note">Having trouble? Contact admin.</p>
+    </div>
+  </main>
+
+  <script>window.OP_DEST = "https://dash.openpeople.world/dash";</script>
+  <script src="/assets/js/gate.js" defer></script>
+</body>
+</html>

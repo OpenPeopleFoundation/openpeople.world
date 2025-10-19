@@ -8,85 +8,174 @@
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="/assets/fonts/Eurostile.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/style.css" />
+  <meta name="theme-color" content="#030306" />
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="site-header reveal">
-    <div class="wrap navwrap">
-      <a class="brand" href="/">
+  <header class="site-header">
+    <div class="wrap nav-wrap">
+      <a class="brand" href="/" aria-label="Open People">
         <img src="/assets/img/op-logo.svg" alt="Open People" width="168" height="36" />
       </a>
-      <nav class="nav">
-        <a href="#mission" data-nav>Mission</a>
-        <a href="#studio" data-nav>Studio</a>
-        <a href="#whitepaper" data-nav>White&nbsp;Paper</a>
-        <a class="btn btn-outline" href="https://dash.openpeople.world" rel="noopener">Login</a>
+      <nav class="site-nav" aria-label="Primary">
+        <button class="nav-toggle" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <div id="mobile-nav" class="nav-links" hidden>
+          <a href="#mission" data-nav>Mission</a>
+          <a href="#studio" data-nav>Studio</a>
+          <a href="#whitepaper" data-nav>White&nbsp;Paper</a>
+          <a class="btn btn-outline" href="/members/" rel="noopener">Login</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <main id="main">
     <section class="hero reveal">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="wrap">
-        <h1 class="title caps">Open People</h1>
-        <p class="lead">Structure before power. Humanity before machine. Alignment before acceleration.</p>
-        <div class="cta">
-          <a class="btn" href="https://dash.openpeople.world" rel="noopener">Login to Dashboards</a>
-          <a class="link" href="#whitepaper">Read the white paper →</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="mission" class="panel reveal">
-      <div class="wrap grid">
-        <div class="card interactive">
-          <h2>Mission</h2>
-          <p>Expand the scope and scale of consciousness; make life multidimensional. We align intention and intelligence through ethical feedback.</p>
-        </div>
-        <div class="card interactive">
-          <h3>Principles</h3>
-          <ul class="bullets">
-            <li><strong>Structure before power</strong> — guardrails first.</li>
-            <li><strong>Humanity before machine</strong> — dignity, consent, proof.</li>
-            <li><strong>Alignment before acceleration</strong> — ethics &gt; speed.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="studio" class="panel reveal">
-      <div class="wrap grid">
-        <div class="card interactive">
-          <h2>Open People Studio</h2>
-          <p>Pilot real businesses with aligned AI. Phase I: <em>Align Business</em>. Phase II: <em>Align Individuals</em>. Phase III: <em>Align Humanity</em>.</p>
-        </div>
-        <div class="card interactive">
-          <h3>Live Testbed — SWL</h3>
-          <p>Snow White Laundry: operational dashboards, intention-to-action loops, transparent metrics.</p>
-          <a class="chip" href="https://dash.openpeople.world" rel="noopener">Launch dashboards</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="whitepaper" class="panel reveal">
-      <div class="wrap">
-        <div class="card interactive">
-          <h2>White Paper</h2>
-          <p>Open People is a public proof of alignment — between humans and the intelligences we create.</p>
-          <div class="row">
-            <a class="btn" href="https://github.com/OpenPeopleFoundation/openpeople.world" rel="noopener">View on GitHub</a>
-            <a class="link" href="#" aria-disabled="true">PDF (coming soon)</a>
+      <div class="hero__backdrop" aria-hidden="true"></div>
+      <div class="wrap hero__wrap">
+        <div class="hero__content">
+          <p class="eyebrow">Structure before power</p>
+          <h1 class="hero__title">Open People</h1>
+          <p class="hero__lead">
+            A living operating system for mission-led companies. We build transparent loops between intention, intelligence, and action.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn-solid" href="/members/" rel="noopener">Launch Dashboards</a>
+            <a class="btn btn-ghost" href="#whitepaper">Read the white paper</a>
           </div>
+        </div>
+        <div class="hero__metrics">
+          <div class="metric-card">
+            <span class="metric-card__label">Live metric loops</span>
+            <span class="metric-card__value">48</span>
+            <span class="metric-card__hint">Realtime telemetry across the SWL testbed.</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-card__label">Ethical guardrails</span>
+            <span class="metric-card__value">12</span>
+            <span class="metric-card__hint">Policies codified before any automation ships.</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-card__label">Alignment score</span>
+            <span class="metric-card__value glow">98%</span>
+            <span class="metric-card__hint">Consensus across operators, data, and community.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mission" class="section reveal">
+      <div class="wrap">
+        <div class="section__header">
+          <p class="eyebrow">Mission</p>
+          <h2>Design alignment before acceleration</h2>
+          <p class="section__lead">
+            Open People expands the scope and scale of consciousness by pairing human intention with accountable intelligence.
+          </p>
+        </div>
+        <div class="grid grid--pillars">
+          <article class="pillar">
+            <h3>Structure before power</h3>
+            <p>We codify guardrails, consent, and feedback loops before automation or capital scale.</p>
+          </article>
+          <article class="pillar">
+            <h3>Humanity before machine</h3>
+            <p>Respect for dignity, proof, and shared language keeps teams and AI moving together.</p>
+          </article>
+          <article class="pillar">
+            <h3>Alignment before acceleration</h3>
+            <p>Speed is earned through measurable trust and transparent instrumentation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="studio" class="section section--dark reveal">
+      <div class="wrap studio">
+        <div class="studio__intro">
+          <p class="eyebrow">Open People Studio</p>
+          <h2>Where hypotheses meet operators</h2>
+          <p>We pilot real businesses with a cadence designed for learnings, not vanity metrics.</p>
+          <ul class="studio__phases">
+            <li><span>Phase I</span> Align Business — prove intention/action loops.</li>
+            <li><span>Phase II</span> Align Individuals — amplify judgment with accountable agents.</li>
+            <li><span>Phase III</span> Align Humanity — federate shared ethics into global primitives.</li>
+          </ul>
+          <a class="chip chip--accent" href="/members/" rel="noopener">Enter member dashboards</a>
+        </div>
+        <div class="studio__timeline">
+          <div class="timeline">
+            <div class="timeline__item">
+              <h3>Snow White Laundry</h3>
+              <p>Operational transparency, carbon-aware routing, and intention-to-action dashboards.</p>
+            </div>
+            <div class="timeline__item">
+              <h3>Operator cockpit</h3>
+              <p>Roles, rituals, and decision support embedded into a shared command center.</p>
+            </div>
+            <div class="timeline__item">
+              <h3>Proof of alignment</h3>
+              <p>Quantitative trail that proves ethical guardrails were honored at every handoff.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="wrap systems">
+        <div class="section__header">
+          <p class="eyebrow">Systems</p>
+          <h2>A living OS for high-agency teams</h2>
+          <p class="section__lead">Purpose-built modules track focus, burn, compliance, and human wellbeing in one orchestration layer.</p>
+        </div>
+        <div class="grid grid--systems">
+          <article class="system">
+            <h3>Focus telemetry</h3>
+            <p>Countdowns, runways, and micro-commitments keep every operator aligned on the next decisive move.</p>
+          </article>
+          <article class="system">
+            <h3>Finance observability</h3>
+            <p>Unified ledger parsing, vendor intelligence, and nudges anchored to cash ethics.</p>
+          </article>
+          <article class="system">
+            <h3>People & rituals</h3>
+            <p>Traceable agreements, restorative cadences, and operating principles that evolve in public.</p>
+          </article>
+          <article class="system">
+            <h3>AI copilots</h3>
+            <p>Agents with transparent prompts, version history, and proof-of-work before they execute.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="whitepaper" class="section section--accent reveal">
+      <div class="wrap whitepaper">
+        <div class="whitepaper__content">
+          <p class="eyebrow">Documentation</p>
+          <h2>White paper & public repositories</h2>
+          <p>Explore the research, primitives, and community calls that keep the OS open and accountable.</p>
+          <div class="whitepaper__actions">
+            <a class="btn btn-solid" href="https://github.com/OpenPeopleFoundation/openpeople.world" rel="noopener">View on GitHub</a>
+            <span class="btn btn-disabled" aria-disabled="true">PDF (coming soon)</span>
+          </div>
+        </div>
+        <div class="whitepaper__callout">
+          <p>Have access? The dashboards evolve daily. Enter with the shared password to review latest loops.</p>
+          <a class="chip" href="/members/" rel="noopener">Members Login</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer reveal">
-    <div class="wrap">
-      <small>© Open People • Designed for alignment, not dominance.</small>
+    <div class="wrap footer">
+      <small>© Open People — Designed for alignment, not dominance.</small>
+      <a class="footer__link" href="mailto:hello@openpeople.world">hello@openpeople.world</a>
     </div>
   </footer>
 

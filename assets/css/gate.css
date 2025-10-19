@@ -1,0 +1,21 @@
+:root{ --accent:#ff5a1f; }
+.gate{min-height:100dvh; display:grid; place-items:center; padding:24px;}
+.gate-card{
+  width:100%; max-width:420px; border:1px solid #232734; border-radius:16px;
+  padding:24px; background:linear-gradient(180deg,#0f1116,#0b0b0f);
+  box-shadow:0 10px 40px rgba(0,0,0,.45);
+}
+.gate-brand{font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:6px}
+.op-paren{color:var(--accent)}
+.gate-title{margin:8px 0 4px; font-size:22px}
+.gate-sub{opacity:.75; font-size:14px}
+.gate-form{display:flex; gap:10px; margin-top:16px}
+.gate-form input{
+  flex:1; padding:10px 12px; border-radius:10px; border:1px solid #232734;
+  background:rgba(0,0,0,.4); color:inherit; outline:none;
+}
+.gate-form input:focus{border-color:var(--accent)}
+.btn{padding:10px 14px; border-radius:10px; border:1px solid #232734; background:transparent; color:inherit}
+.btn:hover{border-color:var(--accent)}
+.gate-error{color:#ffb4a8; font-size:13px; margin-top:10px}
+.gate-note{opacity:.6; font-size:12px; margin-top:12px}
