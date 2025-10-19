@@ -1,4 +1,5 @@
-const CACHE_NAME = 'openpeople-cache-v1';
+const CACHE_VERSION = 'v3';
+const CACHE_NAME = `openpeople-cache-${CACHE_VERSION}`;
 const PRECACHE_URLS = [
   '/',
   '/index.html',
@@ -11,6 +12,7 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => cache.addAll(PRECACHE_URLS))
   );
+  self.skipWaiting();
 });
 
 self.addEventListener('activate', event => {
@@ -23,22 +25,24 @@ self.addEventListener('activate', event => {
       )
     )
   );
+  self.clients.claim();
 });
 
 self.addEventListener('fetch', event => {
+  const { request } = event;
+  if (request.method !== 'GET' || new URL(request.url).origin !== location.origin) {
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request).then(cachedResponse => {
+    caches.match(request).then(cachedResponse => {
       if (cachedResponse) {
         return cachedResponse;
       }
 
-      return fetch(event.request).then(response => {
+      return fetch(request).then(response => {
         const clonedResponse = response.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          if (event.request.method === 'GET') {
-            cache.put(event.request, clonedResponse);
-          }
-        });
+        caches.open(CACHE_NAME).then(cache => cache.put(request, clonedResponse));
         return response;
       });
     })

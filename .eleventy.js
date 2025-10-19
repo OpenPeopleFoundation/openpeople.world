@@ -1,14 +1,6 @@
-module.exports = function(eleventyConfig) {
-  eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
-  eleventyConfig.addPassthroughCopy({ "src/downloads": "downloads" });
-  eleventyConfig.addPassthroughCopy({ "src/manifest.webmanifest": "manifest.webmanifest" });
-  eleventyConfig.addPassthroughCopy({ "src/sw.js": "sw.js" });
-  return { dir: { input: "src", includes: "_includes", data: "_data", output: "_site" } };
-};
-
 const { DateTime } = require("luxon");
 
-module.exports = function (eleventyConfig) {
+module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("date", (value, format = "yyyy") => {
     const dt =
       value === "now"
@@ -19,7 +11,18 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/downloads": "downloads" });
+  eleventyConfig.addPassthroughCopy({ "src/public": "." });
   eleventyConfig.addPassthroughCopy({ "src/manifest.webmanifest": "manifest.webmanifest" });
   eleventyConfig.addPassthroughCopy({ "src/sw.js": "sw.js" });
-  return { dir: { input: "src", includes: "_includes", data: "_data", output: "_site" } };
+  eleventyConfig.addPassthroughCopy({ "src/CNAME": "CNAME" });
+  eleventyConfig.addPassthroughCopy({ "src/.nojekyll": ".nojekyll" });
+
+  return {
+    dir: {
+      input: "src",
+      includes: "_includes",
+      data: "_data",
+      output: "_site"
+    }
+  };
 };

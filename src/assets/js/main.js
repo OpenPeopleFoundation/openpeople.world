@@ -3,9 +3,29 @@
 const toggle = document.querySelector('.nav__toggle');
 const list = document.querySelector('#navmenu');
 if (toggle && list) {
+  const closeMenu = () => {
+    list.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  };
+
   toggle.addEventListener('click', () => {
-    const open = list.classList.toggle('open');
+    const open = !list.classList.contains('open');
+    list.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  list.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.matchMedia('(max-width: 900px)').matches) {
+        closeMenu();
+      }
+    });
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeMenu();
+    }
   });
 }
 
@@ -25,7 +45,7 @@ document.querySelectorAll('.fade').forEach(element => io.observe(element));
 // PWA registration
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js');
+    navigator.serviceWorker.register('/sw.js?v=3');
   });
 }
 

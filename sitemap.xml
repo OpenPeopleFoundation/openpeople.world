@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://openpeople.world/</loc></url>
-  <url><loc>https://openpeople.world/pages/about/</loc></url>
-  <url><loc>https://openpeople.world/pages/protocol/</loc></url>
-  <url><loc>https://openpeople.world/pages/whitepaper/</loc></url>
-  <url><loc>https://openpeople.world/pages/join/</loc></url>
-  <url><loc>https://openpeople.world/pages/contact/</loc></url>
+  <url><loc>https://openpeople.studio/</loc></url>
+  <url><loc>https://openpeople.studio/studio/</loc></url>
+  <url><loc>https://openpeople.studio/members/</loc></url>
+  <url><loc>https://openpeople.studio/whitepaper/</loc></url>
+  <url><loc>https://openpeople.studio/about/</loc></url>
+  <url><loc>https://openpeople.studio/privacy/</loc></url>
 </urlset>

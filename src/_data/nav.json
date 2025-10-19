@@ -1,11 +1,7 @@
 [
-  { "title": "About",       "url": "/pages/about/" },
-  { "title": "Protocol",    "url": "/pages/protocol/" },
-  { "title": "White Paper", "url": "/pages/whitepaper/" },
-  { "title": "Phases",     "url": "/pages/phases/" },
-  { "title": "Foundation",  "url": "/pages/foundation/" },
-  { "title": "Join",        "url": "/pages/join/" },
-  { "title": "Contact",     "url": "/pages/contact/" },
-  { "title": "Members",     "url": "/pages/members/" },
-  { "title": "Dashboards", "url": "/pages/dashboards/" }
+  { "title": "Home",        "url": "/" },
+  { "title": "Studio",      "url": "/studio/" },
+  { "title": "Members",     "url": "/members/" },
+  { "title": "White Paper", "url": "/whitepaper/" },
+  { "title": "About",       "url": "/about/" }
 ]

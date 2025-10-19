@@ -1,13 +1,6 @@
 .DS_Store
-.DS_Store
-package.json
-node_modules/
-.pages-rebuild.txt
-node_modules
 node_modules/
 _site/
 
-echo "node_modules/" >> .gitignore
-echo "_site/" >> .gitignore
-_site/
-node_modules/
+# Local Netlify folder
+.netlify

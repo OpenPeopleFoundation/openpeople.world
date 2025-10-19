@@ -1,25 +1,35 @@
 <header class="site-header">
   <div class="inner container">
     <a class="logo" href="/" aria-label="{{ site.name }}">
-      <span class="word">open</span>
-      <span class="word alt">people</span>
-      <span class="paren">( )</span>
-      <span class="dot" aria-hidden="true"></span>
+      <span class="logo__word">Open</span>
+      <span class="logo__word logo__word--accent">People</span>
+      <span class="logo__suffix">Studio</span>
+      <span class="logo__paren">( )</span>
     </a>
+
     <nav class="nav" aria-label="Primary">
-      <button class="nav__toggle" aria-expanded="false" aria-controls="navmenu">Menu</button>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="navmenu">
+        Menu
+      </button>
       <ul id="navmenu" class="nav__list">
         {% for item in nav %}
+          {% set classes = ['nav__link'] %}
+          {% if item.title | lower == 'members' %}
+            {% set _ = classes.push('nav__link--members') %}
+          {% endif %}
+          {% if page.url == item.url %}
+            {% set _ = classes.push('is-active') %}
+          {% elseif item.url == '/' and page.url == '/' %}
+            {% set _ = classes.push('is-active') %}
+          {% endif %}
           <li>
-            {% set classes = [] %}
-            {% if item.url == '/pages/dashboards/' %}
-              {% set _ = classes.push('member-only') %}
-            {% endif %}
-            {% if item.title | lower == 'members' %}
-              {% set _ = classes.push('guest-only') %}
-            {% endif %}
-            <a href="{{ item.url }}" class="{{ classes | join(' ') }}" {% if page.url == item.url %}aria-current="page"{% endif %}>
-              {{ item.title }}
+            <a href="{{ item.url }}" class="{{ classes | join(' ') }}" {% if page.url == item.url or (item.url == '/' and page.url == '/') %}aria-current="page"{% endif %}>
+              {% if item.title | lower == 'members' %}
+                <span class="guest-only" data-link-state="guest">Members</span>
+                <span class="auth-only" data-link-state="auth">Members Hub</span>
+              {% else %}
+                {{ item.title }}
+              {% endif %}
             </a>
           </li>
         {% endfor %}

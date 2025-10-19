@@ -1,24 +1,38 @@
 <footer class="site-footer">
   <div class="container footer__inner">
-    <div>
-      <a class="logo small" href="/" aria-label="{{ site.name }}">
-        <img src="/assets/img/op-logo.svg" alt="Open People" width="132" height="32" />
-        <span class="sr-only">{{ site.name }}</span>
+    <div class="footer__brand">
+      <a class="footer__logo" href="/" aria-label="{{ site.name }}">
+        <span class="logo__word">Open</span>
+        <span class="logo__word logo__word--accent">People</span>
+        <span class="logo__suffix">Studio</span>
       </a>
-      <p class="tagline">Identity built on trust, not control.</p>
-      <div class="footer__social">
-        <a href="https://x.com/{{ site.twitter }}" target="_blank" rel="noopener">X / @{{ site.twitter }}</a>
-        <a href="https://instagram.com/{{ site.instagram }}" target="_blank" rel="noopener">Instagram / @{{ site.instagram }}</a>
-      </div>
+      <p class="footer__tagline">{{ site.tagline }}</p>
+      <p class="footer__note">Identity built on trust, not control.</p>
     </div>
-    <div class="footer__links">
-      {% for item in nav %}
-        <li><a href="{{ item.url }}" {% if page.url == item.url %}aria-current="page"{% endif %}>{{ item.title }}</a></li>
-      {% endfor %}
+
+    <div class="footer__group">
+      <p class="footer__label">Navigation</p>
+      <ul class="footer__links">
+        {% for item in nav %}
+          {% if item.url != '/' %}
+            <li><a href="{{ item.url }}" {% if page.url == item.url %}aria-current="page"{% endif %}>{{ item.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
     </div>
-    <div class="footer__meta">
-      <p>© {{ "now" | date("yyyy") }} {{ site.name }} — Open source since day one.</p>
-      <p><a href="https://{{ site.domain }}" rel="noopener">{{ site.domain }}</a></p>
+
+    <div class="footer__group">
+      <p class="footer__label">Connect</p>
+      <ul class="footer__links">
+        <li><a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></li>
+        <li><a href="https://x.com/{{ site.twitter }}" target="_blank" rel="noopener">X / @{{ site.twitter }}</a></li>
+        <li><a href="https://instagram.com/{{ site.instagram }}" target="_blank" rel="noopener">Instagram / @{{ site.instagram }}</a></li>
+      </ul>
     </div>
+  </div>
+
+  <div class="container footer__meta">
+    <p>© {{ "now" | date("yyyy") }} {{ site.name }}. {{ site.org }}. All rights reserved.</p>
+    <p><a href="https://{{ site.domain }}" rel="noopener">{{ site.domain }}</a></p>
   </div>
 </footer>

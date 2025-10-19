@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="36" viewBox="0 0 180 36" role="img" aria-label="Open People">
+  <rect width="180" height="36" rx="8" fill="black"/>
+  <circle cx="18" cy="18" r="8" fill="white"/>
+  <rect x="34" y="12" width="28" height="12" rx="6" fill="white"/>
+  <rect x="66" y="12" width="28" height="12" rx="6" fill="white" opacity="0.8"/>
+  <rect x="98" y="12" width="28" height="12" rx="6" fill="white" opacity="0.6"/>
+  <rect x="130" y="12" width="28" height="12" rx="6" fill="white" opacity="0.4"/>
+</svg>

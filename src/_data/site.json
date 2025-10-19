@@ -1,11 +1,16 @@
 {
-  "name": "Open People",
-  "org": "Open People Foundation",
-  "domain": "openpeople.world",
+  "name": "Open People Studio",
+  "org": "Open People Studio",
+  "domain": "openpeople.studio",
+  "tagline": "Identity built on trust, not control.",
   "twitter": "OpenPeopleAI",
   "instagram": "OpenPeopleAI",
   "themeColor": "#000000",
+  "contactEmail": "tom@openpeople.me",
 
   "supabaseUrl": "https://vwrqapholagchwzkkqpt.supabase.co",
-  "supabaseAnon": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ3cnFhcGhvbGFnY2h3emtrcXB0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1NjcyMjIsImV4cCI6MjA3NjE0MzIyMn0.cYUNYMx4ebvly0fLWFTtAqWVLEuPmOTZ21wzxEt1_kI"
+  "supabaseAnon": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ3cnFhcGhvbGFnY2h3emtrcXB0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA1NjcyMjIsImV4cCI6MjA3NjE0MzIyMn0.cYUNYMx4ebvly0fLWFTtAqWVLEuPmOTZ21wzxEt1_kI",
+
+  "cspReportUri": "https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?TOKEN_GOES_HERE",
+  "cspReportGroup": ""
 }
